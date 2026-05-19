@@ -49,7 +49,7 @@ async function handleLogin(event) {
         }
 
         if (!isOk) {
-            errorMessage.textContent = data.error || 'Giriş uğursuz!';
+            errorMessage.textContent = data.error || 'Authentication failed!';
             errorMessage.classList.remove('hidden');
             return;
         }
@@ -181,7 +181,7 @@ async function handleLogin(event) {
             if (teacherDashboard) teacherDashboard.classList.remove('hidden'); // Show dashboard for admin
             if (adminStudentSection) adminStudentSection.classList.remove('hidden'); // Show student form
 
-            // Admin sees everything
+            // SysAdmin sees everything
             Object.values(navElements).forEach(nav => {
                 if (nav) nav.style.display = 'inline';
             });
@@ -189,7 +189,7 @@ async function handleLogin(event) {
             if (streakContainer) streakContainer.classList.add('hidden');
 
             // Load classes for the student selector
-            if (typeof loadAdminClassSelector === 'function') loadAdminClassSelector();
+            if (typeof loadSysAdminClassSelector === 'function') loadSysAdminClassSelector();
         }
 
         // Control navigation visibility based on user role
@@ -218,7 +218,7 @@ async function handleLogin(event) {
         // Load chat messages from API
         if (typeof loadChatFromAPI === 'function') loadChatFromAPI();
 
-        showToast('Giriş uğurlu! Xoş gəldiniz, ' + currentUsername + '!', 'success');
+        showToast('Authentication successful! Welcome, ' + currentUsername + '!', 'success');
 
         // Show Edi welcome message for students (after a short delay)
         if (currentUserRole === 'student' && typeof ediSystem !== 'undefined' && ediSystem.showWelcomeMessage) {
@@ -242,7 +242,7 @@ async function handleLogin(event) {
     } catch (error) {
         console.error('Login error:', error);
         
-        errorMessage.innerHTML = '⚠️ <b>SƏHV:</b> Sistemə giriş zamanı xəta baş verdi.';
+        errorMessage.innerHTML = '⚠️ <b>ERROR:</b> System error during authentication.';
         errorMessage.classList.remove('hidden');
     }
 }
@@ -340,7 +340,7 @@ const navSelfTest = document.getElementById('nav-self-test');
 const navShop = document.getElementById('nav-shop');
 const navRecommendations = document.getElementById('nav-recommendations');
 const navLiveClass = document.getElementById('nav-live-class');
-const navAdmin = document.getElementById('nav-admin');
+const navSysAdmin = document.getElementById('nav-admin');
 const addResourceSection = document.getElementById('add-resource-section');
 const addResourceForm = document.getElementById('add-resource-form');
 const resourcesListSection = document.getElementById('resources-list-section');
@@ -360,8 +360,8 @@ const inventoryGrid = document.getElementById('inventory-grid');
 let assignments = [
     {
         id: 1,
-        title: "Tarix",
-        description: "Səfəvilər dövlətinin qurulması haqqında esse yazın.",
+        title: "History",
+        description: "Write an essay on the establishment of the Safavid state.",
         status: 'new',
         submittedFile: null,
         submittedText: null,
@@ -377,20 +377,20 @@ let assignments = [
     },
     {
         id: 2,
-        title: "Ədəbiyyat",
+        title: "Literature",
         description: "M.F.Axundzadənin həyat və yaradıcılığı.",
         status: 'submitted',
         submittedFile: 'axundzade_heyati.pdf',
         submittedText: "Mirzə Fətəli Axundzadə 1812-ci ildə Şəkidə anadan olmuşdur. O, Azərbaycan ədəbiyyatının böyük nümayəndəsi idi. Onun əsərləri arasında 'Aldanmış kəvakib', 'Müsyö Jordan və dərviş Məstəli şah' kimi komediyalar var. Axundzadə həm də maarifçi idi və xalqın maarifləndirməsi üçün çox işlər görmüşdür.",
         grade: 5,
         feedback: 'Əla işdir, faktları doğru qeyd etmisən.',
-        questions: [{ student: 'Ferid', text: 'Müəllim, neçə səhifə olmalıdır?' }],
+        questions: [{ student: 'Ferid', text: 'Coordinator, neçə səhifə olmalıdır?' }],
         deadline: new Date(Date.now() - 1 * 24 * 60 * 60 * 1000).toISOString(),
         class: '10F',
         points: 50,
         aiAnalysis: {
             plagiarism: "Mətnin 2-ci cümləsi Vikipediyadakı 'M.F.Axundzadə' məqaləsi ilə 78% oxşardır.",
-            mainPoints: "Şagird əsasən Axundzadənin doğum yeri və əsərlərini qeyd edib, lakin onun təhsil fəaliyyətinə az toxunub.",
+            mainPoints: "Trainee əsasən Axundzadənin doğum yeri və əsərlərini qeyd edib, lakin onun təhsil fəaliyyətinə az toxunub.",
             suggestion: "Rəy olaraq təklif: 'Yaxşı başlanğıcdır, lakin Axundzadənin təhsil sahəsindəki fəaliyyətini də əlavə etsən, inşan daha dolğun olar.'"
         },
         sdg: '4',
@@ -398,7 +398,7 @@ let assignments = [
     },
     {
         id: 3,
-        title: "Riyaziyyat",
+        title: "Mathematics",
         description: "Kvadrat tənliklər mövzusunda 10 məsələ həll edin.",
         status: 'submitted',
         submittedFile: null,
@@ -415,7 +415,7 @@ let assignments = [
     },
     {
         id: 4,
-        title: "Biologiya",
+        title: "Biology",
         description: "Bitki hüceyrəsinin quruluşunu cədvəldə izah edin və 5 fərqi yazın.",
         status: 'new',
         submittedFile: null,
@@ -432,7 +432,7 @@ let assignments = [
     },
     {
         id: 5,
-        title: "İngilis dili",
+        title: "English Language",
         description: "Daily routine mövzusunda 120-150 sözlük esse yazın.",
         status: 'new',
         submittedFile: null,
@@ -450,13 +450,13 @@ let assignments = [
 ];
 
 let resources = [
-    { id: 1, title: 'Azərbaycan Tarixi Dərslik (PDF)', link: '#', description: '7-ci sinif üçün dərslik.' }
+    { id: 1, title: 'Azərbaycan Historyi Dərslik (PDF)', link: '#', description: '7-ci sinif üçün dərslik.' }
 ];
 
 let globalOERResources = [
-    { id: 1, title: 'Khan Academy - Riyaziyyat', link: 'https://www.khanacademy.org/math', description: 'Pulsuz riyaziyyat dərsləri', source: 'Khan Academy' },
+    { id: 1, title: 'Khan Academy - Mathematics', link: 'https://www.khanacademy.org/math', description: 'Free math lessons', source: 'Khan Academy' },
     { id: 2, title: 'MIT OpenCourseWare - Fizika', link: 'https://ocw.mit.edu/courses/physics/', description: 'MIT-dən pulsuz fizika kursları', source: 'MIT' },
-    { id: 3, title: 'Coursera - Tarix', link: 'https://www.coursera.org/browse/arts-and-humanities/history', description: 'Dünya universitetlərindən tarix kursları', source: 'Coursera' }
+    { id: 3, title: 'Coursera - History', link: 'https://www.coursera.org/browse/arts-and-humanities/history', description: 'Dünya universitetlərindən tarix kursları', source: 'Coursera' }
 ];
 
 let booksData = [
@@ -464,7 +464,7 @@ let booksData = [
         id: 1,
         title: '1984',
         author: 'George Orwell',
-        category: 'siyasi',
+        category: 'political',
         icon: '📘',
         description: 'Totalitar cəmiyyətdə nəzarət və azadlıq mövzuları.',
         summary: 'Dövlətin hər şeyi izlədiyi dünyada fərdin azadlıq axtarışı və həqiqətin manipulyasiyası təsvir olunur.',
@@ -474,7 +474,7 @@ let booksData = [
         id: 2,
         title: 'Alkimyager',
         author: 'Paulo Coelho',
-        category: 'fəlsəfə',
+        category: 'philosophy',
         icon: '📗',
         description: 'Arzuların arxasınca getmək haqqında motivasiya hekayəsi.',
         summary: 'Santiago öz xəzinəsini tapmaq üçün səfərə çıxır və yol boyunca öz məqsədini kəşf edir.',
@@ -484,17 +484,17 @@ let booksData = [
         id: 3,
         title: 'Xəmsə',
         author: 'Nizami Gəncəvi',
-        category: 'klassik',
+        category: 'classic',
         icon: '📙',
-        description: 'Azərbaycan klassik ədəbiyyatının zirvəsi.',
-        summary: 'Beş poemadan ibarət klassik toplusu; sevgi, ədalət və hikmət mövzularını işləyir.',
+        description: 'Azərbaycan classic ədəbiyyatının zirvəsi.',
+        summary: 'Beş poemadan ibarət classic toplusu; sevgi, ədalət və hikmət mövzularını işləyir.',
         status: 'available'
     },
     {
         id: 4,
-        title: 'Qısa Zaman Tarixi',
+        title: 'Qısa Zaman Historyi',
         author: 'Stephen Hawking',
-        category: 'elm',
+        category: 'science',
         icon: '📕',
         description: 'Kainatın quruluşu və zamanın təbiəti.',
         summary: 'Böyük partlayış, qara dəliklər və kosmologiya haqqında aydın izahlar.',
@@ -504,7 +504,7 @@ let booksData = [
         id: 5,
         title: 'Şərq Ekspressində Qətl',
         author: 'Agatha Christie',
-        category: 'klassik',
+        category: 'classic',
         icon: '📓',
         description: 'Hercule Poirotun ən məşhur istintaqlarından biri.',
         summary: 'Qarlı dağlarda dayanan qatarda baş verən qətlin həlli üçün Poirot ipuclarını birləşdirir.',
@@ -514,7 +514,7 @@ let booksData = [
         id: 6,
         title: 'Sapiens',
         author: 'Yuval Noah Harari',
-        category: 'elm',
+        category: 'science',
         icon: '📘',
         description: 'İnsanlığın tarixi və inkişaf mərhələləri.',
         summary: 'İbtidai icmalardan müasir cəmiyyətə qədər insanın sosial və mədəni təkamülü izah olunur.',
@@ -703,7 +703,7 @@ function loadUserData() {
 
     // Notifications
     notifications = JSON.parse(localStorage.getItem(`notifications_${currentUser.id}`) || JSON.stringify([
-        { id: 1, message: 'Salam! EduTask-a xoş gəldiniz.', timestamp: new Date(), read: false, type: 'info' }
+        { id: 1, message: 'System initialized. Welcome to EduAgent.', timestamp: new Date(), read: false, type: 'info' }
     ])); // Default notification for new user
 
     // Inventory
@@ -757,40 +757,40 @@ function saveUserData() {
 const questPool = [
     {
         id: 'xp-boost',
-        title: 'XP Partlayışı',
-        description: 'Bugün 200 XP topla.',
+        title: 'XP Burst',
+        description: 'Accumulate 200 XP today.',
         icon: '⚡',
         metric: 'xp',
         target: 200
     },
     {
         id: 'points-sprint',
-        title: 'Xal Sprinti',
-        description: '50 xal yığ və yeni səviyyə aç.',
+        title: 'Metrics Sprint',
+        description: 'Gather 50 metrics to level up.',
         icon: '🏆',
         metric: 'points',
         target: 50
     },
     {
         id: 'streak-guard',
-        title: 'Streak Qoruyucusu',
-        description: '3 günlük seriyanı qoruyub saxla.',
+        title: 'Streak Guardian',
+        description: 'Maintain 3-day active process streak.',
         icon: '🔥',
         metric: 'streak',
         target: 3
     },
     {
         id: 'daily-check',
-        title: 'Günlük Start',
-        description: 'Bu gün EduTask-a daxil ol.',
+        title: 'Daily Initialization',
+        description: 'Authenticate to EduAgent today.',
         icon: '✅',
         metric: 'login',
         target: 1
     },
     {
         id: 'focus-charge',
-        title: 'Fokus Enerjisi',
-        description: 'Pomodoro taymerini 1 dəfə işlət.',
+        title: 'Focus Energy',
+        description: 'Engage the Pomodoro protocol once.',
         icon: '⏱️',
         metric: 'pomodoro',
         target: 1
@@ -1106,9 +1106,9 @@ let badges = [
     { id: 7, name: 'Mentor III', description: '40 sual cavablandır', icon: '🧙‍♂️', earned: false, certificationId: 'CERT-007', points: 60 },
     { id: 8, name: 'Mentor IV', description: '60 sual cavablandır', icon: '🦉', earned: false, certificationId: 'CERT-008', points: 80 },
     { id: 9, name: 'Mentor V', description: '80 sual cavablandır', icon: '🌟', earned: false, certificationId: 'CERT-009', points: 100 },
-    { id: 10, name: 'Kvadrat Tənlik Ustası I', description: 'Riyaziyyat tapşırığını tamamla', icon: '🔢', earned: false, certificationId: 'CERT-010', points: 15 },
-    { id: 11, name: 'Tarix Bilicisi I', description: 'Tarix tapşırığını tamamla', icon: '📜', earned: true, certificationId: 'CERT-011', points: 15 },
-    { id: 12, name: 'Ədəbiyyat Həvəskarı I', description: 'Ədəbiyyat tapşırığını tamamla', icon: '📚', earned: true, certificationId: 'CERT-012', points: 15 }
+    { id: 10, name: 'Kvadrat Tənlik Ustası I', description: 'Mathematics tapşırığını tamamla', icon: '🔢', earned: false, certificationId: 'CERT-010', points: 15 },
+    { id: 11, name: 'History Bilicisi I', description: 'History tapşırığını tamamla', icon: '📜', earned: true, certificationId: 'CERT-011', points: 15 },
+    { id: 12, name: 'Literature Həvəskarı I', description: 'Literature tapşırığını tamamla', icon: '📚', earned: true, certificationId: 'CERT-012', points: 15 }
 ];
 
 // Mythic Shop Timer System (uses new shopItems from shop section)
@@ -1610,7 +1610,7 @@ let classes = {
 let quizzes = [
     {
         id: 1,
-        title: 'Azərbaycan Tarixi - Səfəvilər',
+        title: 'Azərbaycan Historyi - Səfəvilər',
         class: '10F',
         questions: [
             { question: 'Səfəvi dövləti hansı ildə qurulmuşdur?', type: 'multiple', options: ['1501', '1502', '1503', '1504'], correct: 0 },
@@ -1623,8 +1623,8 @@ let quizzes = [
 
 let meetings = [];
 let notifications = [
-    { id: 1, message: 'Yeni tapşırıq əlavə edildi: Tarix', timestamp: new Date(Date.now() - 30 * 60 * 1000), read: false, type: 'assignment' },
-    { id: 2, message: 'Ədəbiyyat tapşırığınız qiymətləndirildi', timestamp: new Date(Date.now() - 2 * 60 * 60 * 1000), read: false, type: 'grade' }
+    { id: 1, message: 'Yeni tapşırıq əlavə edildi: History', timestamp: new Date(Date.now() - 30 * 60 * 1000), read: false, type: 'assignment' },
+    { id: 2, message: 'Literature tapşırığınız qiymətləndirildi', timestamp: new Date(Date.now() - 2 * 60 * 60 * 1000), read: false, type: 'grade' }
 ];
 
 // currentUserRole is already declared at line 62
@@ -1634,8 +1634,8 @@ let currentSelfTest = null;
 
 // Olimpiada certificates
 let certificates = [
-    { id: 1, name: 'Riyaziyyat Olimpiadası', level: 'Rayon', year: 2024, position: 'I yer', icon: '🥇' },
-    { id: 2, name: 'Tarix Olimpiadası', level: 'Şəhər', year: 2024, position: 'II yer', icon: '🥈' },
+    { id: 1, name: 'Mathematics Olimpiadası', level: 'Rayon', year: 2024, position: 'I yer', icon: '🥇' },
+    { id: 2, name: 'History Olimpiadası', level: 'Şəhər', year: 2024, position: 'II yer', icon: '🥈' },
     { id: 3, name: 'Fizika Olimpiadası', level: 'Respublika', year: 2023, position: 'III yer', icon: '🥉' }
 ];
 
@@ -1863,16 +1863,16 @@ function generateEduBotReport() {
     if (mathGrades.length > 0) {
         const mathAvg = mathGrades.reduce((a, b) => a + b) / mathGrades.length;
         if (mathAvg >= 4) {
-            report += "Riyaziyyatda çox yaxşısan! ";
+            report += "Mathematicsda çox yaxşısan! ";
         } else {
-            report += "Riyaziyyata daha çox diqqət yetir. ";
+            report += "Mathematicsa daha çox diqqət yetir. ";
         }
     }
 
     if (historyGrades.length > 0) {
         const historyAvg = historyGrades.reduce((a, b) => a + b) / historyGrades.length;
         if (historyAvg >= 4) {
-            report += "Tarixdə də əlasən! ";
+            report += "Historydə də əlasən! ";
         }
     }
 
@@ -2025,14 +2025,14 @@ function checkBadges() {
 
     if (historyCompleted >= 1 && !badges[10].earned) {
         badges[10].earned = true;
-        awardPoints(badges[10].points, 'Yeni nişan: Tarix Bilicisi I');
-        addNotification('🎉 Yeni nişan qazandınız: Tarix Bilicisi I!', 'badge');
+        awardPoints(badges[10].points, 'Yeni nişan: History Bilicisi I');
+        addNotification('🎉 Yeni nişan qazandınız: History Bilicisi I!', 'badge');
     }
 
     if (literatureCompleted >= 1 && !badges[11].earned) {
         badges[11].earned = true;
-        awardPoints(badges[11].points, 'Yeni nişan: Ədəbiyyat Həvəskarı I');
-        addNotification('🎉 Yeni nişan qazandınız: Ədəbiyyat Həvəskarı I!', 'badge');
+        awardPoints(badges[11].points, 'Yeni nişan: Literature Həvəskarı I');
+        addNotification('🎉 Yeni nişan qazandınız: Literature Həvəskarı I!', 'badge');
     }
 }
 
@@ -2467,8 +2467,8 @@ function generateRecommendations() {
         const mathAvg = mathGrades.reduce((a, b) => a + b) / mathGrades.length;
         if (mathAvg < 4) {
             recommendations.push({
-                title: 'Riyaziyyat Təkmilləşdirmə',
-                description: 'Riyaziyyat qiymətləriniz ortalaması aşağıdır. Əlavə məşq tapşırıqları təklif edirik.',
+                title: 'Mathematics Təkmilləşdirmə',
+                description: 'Mathematics qiymətləriniz ortalaması aşağıdır. Əlavə məşq tapşırıqları təklif edirik.',
                 action: 'Kvadrat tənliklər mövzusunda əlavə məsələlər həll edin',
                 type: 'weak_subject'
             });
@@ -2479,8 +2479,8 @@ function generateRecommendations() {
         const historyAvg = historyGrades.reduce((a, b) => a + b) / historyGrades.length;
         if (historyAvg < 4) {
             recommendations.push({
-                title: 'Tarix Dərinləşdirmə',
-                description: 'Tarix fənnində performansınızı artırmaq üçün əlavə oxu materialları.',
+                title: 'History Dərinləşdirmə',
+                description: 'History fənnində performansınızı artırmaq üçün əlavə oxu materialları.',
                 action: 'Səfəvilər dövləti haqqında əlavə araşdırma edin',
                 type: 'weak_subject'
             });
@@ -3072,7 +3072,7 @@ function renderShop() {
                             <div class="sample-tag">Chat</div>
                             <div class="sample-title">Sürətli cavab</div>
                             <div class="sample-name">Ləman <span class="name-badge">${sampleBadgeThree}</span></div>
-                            <div class="sample-text">"Riyaziyyat sualını həll etdim, izah edirəm."</div>
+                            <div class="sample-text">"Mathematics sualını həll etdim, izah edirəm."</div>
                         </div>
                         <div class="sample-card is-wall">
                             <div class="sample-tag">Divar</div>
@@ -3293,7 +3293,7 @@ function equipItem(itemId) {
 
 const skillTreeData = {
     riyaziyyat: {
-        name: '📐 Riyaziyyat',
+        name: '📐 Mathematics',
         icon: '📐',
         color: '#3498db',
         skills: [
@@ -3304,22 +3304,22 @@ const skillTreeData = {
         ]
     },
     tarix: {
-        name: '📜 Tarix',
+        name: '📜 History',
         icon: '📜',
         color: '#e67e22',
         skills: [
-            { id: 'hist_1', name: 'Qədim Tarix', level: 1, xpRequired: 0, emoji: '🏛️', unlocked: true, progress: 90 },
+            { id: 'hist_1', name: 'Qədim History', level: 1, xpRequired: 0, emoji: '🏛️', unlocked: true, progress: 90 },
             { id: 'hist_2', name: 'Orta Əsrlər', level: 2, xpRequired: 500, emoji: '⚔️', unlocked: true, progress: 60 },
             { id: 'hist_3', name: 'Yeni Dövr', level: 3, xpRequired: 1000, emoji: '🏰', unlocked: true, progress: 30 },
-            { id: 'hist_4', name: 'Müasir Tarix', level: 4, xpRequired: 2000, emoji: '🌍', unlocked: false, progress: 0 }
+            { id: 'hist_4', name: 'Müasir History', level: 4, xpRequired: 2000, emoji: '🌍', unlocked: false, progress: 0 }
         ]
     },
     edebiyyat: {
-        name: '📚 Ədəbiyyat',
+        name: '📚 Literature',
         icon: '📚',
         color: '#9b59b6',
         skills: [
-            { id: 'lit_1', name: 'Klassik Ədəbiyyat', level: 1, xpRequired: 0, emoji: '📖', unlocked: true, progress: 100 },
+            { id: 'lit_1', name: 'Klassik Literature', level: 1, xpRequired: 0, emoji: '📖', unlocked: true, progress: 100 },
             { id: 'lit_2', name: 'Romantizm', level: 2, xpRequired: 500, emoji: '💕', unlocked: true, progress: 50 },
             { id: 'lit_3', name: 'Realizm', level: 3, xpRequired: 1000, emoji: '🎭', unlocked: false, progress: 0 },
             { id: 'lit_4', name: 'Modernizm', level: 4, xpRequired: 2000, emoji: '🎨', unlocked: false, progress: 0 }
@@ -3694,13 +3694,13 @@ function showLiveClassPanel() {
     notificationDropdown.classList.add('hidden');
 }
 
-function showAdminPanel() {
+function showSysAdminPanel() {
     hideAllPanels();
     adminPanel.classList.remove('hidden');
     clearActiveNav();
-    navAdmin.classList.add('active');
-    renderAdminPanel();
-    loadAdminReports(); // Load reports
+    navSysAdmin.classList.add('active');
+    renderSysAdminPanel();
+    loadSysAdminReports(); // Load reports
     loadBlacklist(); // Load blacklist
     notificationDropdown.classList.add('hidden');
 }
@@ -3710,7 +3710,7 @@ async function loadBlacklist() {
     const listContainer = document.getElementById('blacklist-list');
     if (!listContainer) return;
 
-    listContainer.innerHTML = '<span style="color:#666;">Yüklənir...</span>';
+    listContainer.innerHTML = '<span style="color:#666;">Loading...</span>';
 
     try {
         const response = await fetch(`${API_BASE}/ai/blacklist`, {
@@ -3854,19 +3854,19 @@ function getEduBotResponse(userText) {
         return 'Yaxşıyam, sağ ol! 😊 Sənin dərslərində kömək etməyə hazıram. Hansı mövzuda sual var?';
     }
 
-    // Riyaziyyat
+    // Mathematics
     if (text.includes('riyaziyyat') || text.includes('tənlik') || text.includes('hesab') || text.includes('ədəd')) {
-        return '📐 Riyaziyyat haqqında soruşursan. Gəl Sokrat üsulu ilə gedək: Əvvəlcə mənə de, bu məsələdə nəyi bilirsən və harda ilişib qaldın?';
+        return '📐 Mathematics haqqında soruşursan. Gəl Sokrat üsulu ilə gedək: Əvvəlcə mənə de, bu məsələdə nəyi bilirsən və harda ilişib qaldın?';
     }
 
-    // Tarix
+    // History
     if (text.includes('tarix') || text.includes('səfəvi') || text.includes('tarixi')) {
-        return '📜 Tarix mövzusu! Maraqlıdır. Əvvəlcə sənə bir sual: Bu dövr haqqında əvvəldən nə bilirsən? Hansı hadisələri xatırlayırsan?';
+        return '📜 History mövzusu! Maraqlıdır. Əvvəlcə sənə bir sual: Bu dövr haqqında əvvəldən nə bilirsən? Hansı hadisələri xatırlayırsan?';
     }
 
-    // Ədəbiyyat
+    // Literature
     if (text.includes('ədəbiyyat') || text.includes('şeir') || text.includes('yazıçı') || text.includes('əsər')) {
-        return '📚 Ədəbiyyat gözəl mövzudur! Hansı əsər və ya yazıçı haqqında danışırıq? Əsərin əsas ideyası nə ola bilər, sənin fikrincə?';
+        return '📚 Literature gözəl mövzudur! Hansı əsər və ya yazıçı haqqında danışırıq? Əsərin əsas ideyası nə ola bilər, sənin fikrincə?';
     }
 
     // Fizika
@@ -4075,7 +4075,7 @@ function renderClassWall() {
         let timeText = timeAgo < 1 ? 'İndicə' : `${timeAgo} saat əvvəl`;
         if (timeAgo >= 24) timeText = Math.floor(timeAgo / 24) + ' gün əvvəl';
 
-        // Admin or teacher can delete any post, users can only delete their own
+        // SysAdmin or teacher can delete any post, users can only delete their own
         const isOwn = currentUser && post.userId === currentUser.id;
         const badgeMarkup = renderUserBadge(post.userId);
         const canDelete = isOwn || currentUserRole === 'teacher' || currentUserRole === 'admin';
@@ -4142,9 +4142,9 @@ function renderClassManagement() {
         studentsContainer.innerHTML += `
                 <div class="student-card" style="border: 2px dashed #ddd;">
                     <div style="text-align: center;">
-                        <h4>Yeni Şagird</h4>
+                        <h4>Yeni Trainee</h4>
                         <form onsubmit="addStudent(event, '${currentClass}')">
-                            <input type="text" name="studentName" placeholder="Şagird adı" required style="width: 100%; margin-bottom: 10px; padding: 8px; border: 1px solid #ddd; border-radius: 5px;">
+                            <input type="text" name="studentName" placeholder="Trainee adı" required style="width: 100%; margin-bottom: 10px; padding: 8px; border: 1px solid #ddd; border-radius: 5px;">
                             <button type="submit" style="background:var(--primary-color);color:white;border:none;padding:8px 15px;border-radius:5px;cursor:pointer;">Əlavə Et</button>
                         </form>
                     </div>
@@ -4191,7 +4191,7 @@ function renderActiveMeetings() {
                 <div class="card" style="margin-bottom: 15px;">
                     <h4>${meeting.title}</h4>
                     <p><strong>Sinif:</strong> ${meeting.class}</p>
-                    <p><strong>Tarix:</strong> ${meetingDate.toLocaleString('az-AZ')}</p>
+                    <p><strong>History:</strong> ${meetingDate.toLocaleString('az-AZ')}</p>
                     <p><strong>Platform:</strong> ${meeting.platform}</p>
                     <div class="meeting-link">
                         <strong>Link:</strong> <a href="${meeting.link}" target="_blank">${meeting.link}</a>
@@ -4219,7 +4219,7 @@ function renderStudentMeetings() {
         studentMeetingsContainer.innerHTML += `
                 <div class="card" style="margin-bottom: 15px;">
                     <h4>${meeting.title}</h4>
-                    <p><strong>Tarix:</strong> ${meetingDate.toLocaleString('az-AZ')}</p>
+                    <p><strong>History:</strong> ${meetingDate.toLocaleString('az-AZ')}</p>
                     <p><strong>Platform:</strong> ${meeting.platform}</p>
                     ${isUpcoming ?
                 `<a href="${meeting.link}" target="_blank" class="action-btn" style="background:var(--primary-color);width:auto;padding:10px 20px;text-decoration:none;">Görüşə Qoşul</a>` :
@@ -4282,7 +4282,7 @@ function renderStudentQuizzes() {
     });
 }
 
-function renderAdminPanel() {
+function renderSysAdminPanel() {
     // Update admin statistics
     const totalStudents = Object.values(classes).reduce((sum, classStudents) => sum + classStudents.length, 0);
     document.getElementById('total-students').textContent = totalStudents;
@@ -4456,7 +4456,7 @@ function updateDashboard(role, username) {
                 </div>
             `;
     } else if (role === 'teacher') {
-        userInfoHeader.innerHTML = `<h4>Hüseyn M.</h4><p>Müəllim</p>`;
+        userInfoHeader.innerHTML = `<h4>Hüseyn M.</h4><p>Coordinator</p>`;
         welcomeBanner.innerHTML = `
             <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;">
                 <div>
@@ -4474,11 +4474,11 @@ function updateDashboard(role, username) {
         if (pomodoroContainer) pomodoroContainer.classList.add('hidden');
         statsGrid.innerHTML = '';
     } else if (role === 'admin') {
-        userInfoHeader.innerHTML = `<h4>Feridhuseyn</h4><p>Administrator</p>`;
+        userInfoHeader.innerHTML = `<h4>Feridhuseyn</h4><p>SysAdministrator</p>`;
         welcomeBanner.innerHTML = `
             <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;">
                 <div>
-                    <h1 style="margin:0;font-size:1.8em;">⚙️ Admin Panel</h1>
+                    <h1 style="margin:0;font-size:1.8em;">⚙️ SysAdmin Panel</h1>
                     <p style="margin-top:10px;opacity:0.9;font-size:1.1em;">Sistem idarəçiliyi və konfiqurasiya</p>
                 </div>
                 <div style="font-size:4em;opacity:0.8;">🛠️</div>
@@ -4558,7 +4558,7 @@ function renderStudentTasks() {
                 gradeFeedbackHTML = `
                         <div class="grade-feedback-area">
                             <span class="grade">Qiymət: ${task.grade}/5</span>
-                            <p class="feedback"><strong>Müəllim rəyi:</strong> ${task.feedback}</p>
+                            <p class="feedback"><strong>Coordinator rəyi:</strong> ${task.feedback}</p>
                         </div>
                     `;
             }
@@ -4749,7 +4749,7 @@ function renderTeacherSubmissions() {
 
         teacherSubmissionList.innerHTML += `
                 <div class="card" style="margin-bottom:20px; animation-delay: ${0.3 + index * 0.1}s;">
-                    <p style="margin:0;"><strong>Şagird:</strong> Ferid (10F)</p>
+                    <p style="margin:0;"><strong>Trainee:</strong> Ferid (10F)</p>
                     <p style="margin:5px 0;"><strong>Tapşırıq:</strong> ${task.title}</p>
                     ${task.submittedFile ? `<p style="margin:0; font-weight:600; color:var(--primary-color);">${task.submittedFile}</p>` : ''}
                     ${task.submittedText ? `<div style="margin:10px 0; padding:10px; background:#f8f9fa; border-radius:5px; border-left:3px solid var(--primary-color);"><strong>Mətn cavabı:</strong><br>${task.submittedText}</div>` : ''}
@@ -4771,7 +4771,7 @@ function renderTeacherQuestions() {
             task.questions.forEach(q => {
                 teacherQuestionsList.innerHTML += `
                         <div class="card question-card" style="margin-bottom:20px;">
-                            <p style="margin:0;"><strong>Şagird:</strong> ${q.student}</p>
+                            <p style="margin:0;"><strong>Trainee:</strong> ${q.student}</p>
                             <p style="margin:5px 0;"><strong>Tapşırıq:</strong> ${task.title}</p>
                             <p style="margin:0; font-style:italic;"><strong>Sual:</strong> "${q.text}"</p>
                         </div>
@@ -4841,7 +4841,7 @@ function selectDifficulty(difficulty, element) {
 function deleteClass(className) {
     if (confirm(`${className} sinifini silmək istədiyinizə əminsiniz?`)) {
         delete classes[className];
-        renderAdminPanel();
+        renderSysAdminPanel();
         updateClassSelectors();
         showToast(`${className} sinifi silindi`, 'info');
     }
@@ -4871,7 +4871,7 @@ function addStudent(event, className) {
 
     event.target.reset();
     renderClassManagement();
-    renderAdminPanel();
+    renderSysAdminPanel();
     showToast(`${studentName} əlavə edildi`, 'success');
 }
 
@@ -4879,7 +4879,7 @@ function removeStudent(className, studentName) {
     if (confirm(`${studentName} şagirdini silmək istədiyinizə əminsiniz?`)) {
         classes[className] = classes[className].filter(s => s.name !== studentName);
         renderClassManagement();
-        renderAdminPanel();
+        renderSysAdminPanel();
         showToast(`${studentName} silindi`, 'info');
     }
 }
@@ -5038,7 +5038,7 @@ function viewQuizResults(quizId) {
             <span class="close-modal" onclick="document.getElementById('quiz-results-modal').style.display='none'">&times;</span>
             <h2 style="margin-bottom: 20px;">📊 ${quizTitle} - Nəticələr</h2>
             <div id="quiz-results-list" style="max-height: 400px; overflow-y: auto;">
-                <div style="text-align:center;padding:20px;">Yüklənir...</div>
+                <div style="text-align:center;padding:20px;">Loading...</div>
             </div>
         </div>
     `;
@@ -5061,10 +5061,10 @@ function viewQuizResults(quizId) {
             <table style="width:100%;border-collapse:collapse;">
                 <thead>
                     <tr style="background:#f8f9fa;">
-                        <th style="padding:12px;text-align:left;border-bottom:2px solid #ddd;">Şagird</th>
+                        <th style="padding:12px;text-align:left;border-bottom:2px solid #ddd;">Trainee</th>
                         <th style="padding:12px;text-align:center;border-bottom:2px solid #ddd;">Nəticə</th>
                         <th style="padding:12px;text-align:center;border-bottom:2px solid #ddd;">Faiz</th>
-                        <th style="padding:12px;text-align:right;border-bottom:2px solid #ddd;">Tarix</th>
+                        <th style="padding:12px;text-align:right;border-bottom:2px solid #ddd;">History</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -5125,7 +5125,7 @@ function showLogin(role) {
     loginForm.reset();
     loginForm.role.value = role;
     loginForm.username.focus();
-    loginScreen.querySelector('h1').textContent = (role === 'teacher') ? "Müəllim Girişi" : "Şagird Girişi";
+    loginScreen.querySelector('h1').textContent = (role === 'teacher') ? "Coordinator Girişi" : "Trainee Girişi";
     errorMessage.classList.add('hidden');
 }
 
@@ -5279,7 +5279,7 @@ async function generateSelfTest(subject, topic, difficulty) {
     );
 
     if (isNonEducational) {
-        return { error: 'Bu mövzu təhsillə əlaqəli deyil. Zəhmət olmasa təhsil mövzusu daxil edin (məsələn: Riyaziyyat, Tarix, Fizika, Kimya və s.).' };
+        return { error: 'Bu mövzu təhsillə əlaqəli deyil. Zəhmət olmasa təhsil mövzusu daxil edin (məsələn: Mathematics, History, Fizika, Kimya və s.).' };
     }
 
     const difficultyText = {
@@ -5554,7 +5554,7 @@ function showFAQModal() {
 }
 
 function showTeacherGuideModal() {
-    alert('👨‍🏫 Müəllimlər üçün Təlimatlar\n\n1. Yeni tapşırıq yaratmaq\n2. Şagird işlərini qiymətləndirmək\n3. AI analiz alətlərindən istifadə\n4. Sinif idarəçiliyi\n5. Canlı dərs təşkili');
+    alert('👨‍🏫 Coordinatorlər üçün Təlimatlar\n\n1. Yeni tapşırıq yaratmaq\n2. Trainee işlərini qiymətləndirmək\n3. AI analiz alətlərindən istifadə\n4. Sinif idarəçiliyi\n5. Canlı dərs təşkili');
 }
 
 function showTermsModal() {
@@ -5792,7 +5792,7 @@ document.getElementById('add-class-form').addEventListener('submit', function (e
     classes[className] = [];
     showToast(`${className} sinifi uğurla əlavə edildi!`, 'success');
     document.getElementById('new-class-name').value = '';
-    renderAdminPanel();
+    renderSysAdminPanel();
     updateClassSelectors();
 });
 
@@ -6065,7 +6065,7 @@ function likePost(postId) {
         if (!post.likes) post.likes = 0;
         if (!post.likedBy) post.likedBy = [];
 
-        const currentUser = currentUserRole === 'student' ? 'Ferid' : 'Müəllim';
+        const currentUser = currentUserRole === 'student' ? 'Ferid' : 'Coordinator';
         if (!post.likedBy.includes(currentUser)) {
             post.likes++;
             post.likedBy.push(currentUser);
@@ -6094,7 +6094,7 @@ function replyToPost(postId) {
         if (post) {
             if (!post.answers) post.answers = [];
             post.answers.push({
-                author: currentUserRole === 'student' ? 'Ferid' : 'Müəllim',
+                author: currentUserRole === 'student' ? 'Ferid' : 'Coordinator',
                 text: replyText.trim(),
                 timestamp: new Date()
             });
@@ -6290,8 +6290,8 @@ submitTask = function (event, taskId) {
 // ========================================
 let roleNotifications = {
     student: [
-        { id: 1, message: 'Yeni tapşırıq əlavə edildi: Tarix', timestamp: new Date(Date.now() - 30 * 60 * 1000), read: false, type: 'assignment' },
-        { id: 2, message: 'Ədəbiyyat tapşırığınız qiymətləndirildi', timestamp: new Date(Date.now() - 2 * 60 * 60 * 1000), read: false, type: 'grade' }
+        { id: 1, message: 'Yeni tapşırıq əlavə edildi: History', timestamp: new Date(Date.now() - 30 * 60 * 1000), read: false, type: 'assignment' },
+        { id: 2, message: 'Literature tapşırığınız qiymətləndirildi', timestamp: new Date(Date.now() - 2 * 60 * 60 * 1000), read: false, type: 'grade' }
     ],
     teacher: [
         { id: 1, message: 'Ferid tapşırığını təhvil verdi', timestamp: new Date(Date.now() - 1 * 60 * 60 * 1000), read: false, type: 'submission' },
@@ -6391,8 +6391,8 @@ if (typeof renderSkillTree !== 'function') {
         const skills = [
             { id: 1, name: 'Oxuma', icon: '📖', level: 3, maxLevel: 5, unlocked: true },
             { id: 2, name: 'Yazma', icon: '✍️', level: 2, maxLevel: 5, unlocked: true },
-            { id: 3, name: 'Riyaziyyat', icon: '🔢', level: 1, maxLevel: 5, unlocked: true },
-            { id: 4, name: 'Tarix', icon: '📜', level: 2, maxLevel: 5, unlocked: true },
+            { id: 3, name: 'Mathematics', icon: '🔢', level: 1, maxLevel: 5, unlocked: true },
+            { id: 4, name: 'History', icon: '📜', level: 2, maxLevel: 5, unlocked: true },
             { id: 5, name: 'Elm', icon: '🔬', level: 0, maxLevel: 5, unlocked: false },
             { id: 6, name: 'Sənət', icon: '🎨', level: 0, maxLevel: 5, unlocked: false }
         ];
@@ -6472,7 +6472,7 @@ async function loadNewsFromAPI() {
                     id: 102,
                     title: 'Məktəbimizdə Yeni Robototexnika Laboratoriyası',
                     category: 'robot',
-                    content: 'Şagirdlərimiz üçün müasir robototexnika avadanlıqları ilə təchiz olunmuş yeni laboratoriya istifadəyə verildi. İlk dərs sabah başlayır.',
+                    content: 'Traineelərimiz üçün müasir robototexnika avadanlıqları ilə təchiz olunmuş yeni laboratoriya istifadəyə verildi. İlk dərs sabah başlayır.',
                     image_url: 'https://images.unsplash.com/photo-1535378437803-91c8ba61f777?auto=format&fit=crop&q=80&w=500',
                     created_at: new Date().toISOString(),
                     author_name: 'Məktəb İdarəsi'
@@ -6494,7 +6494,7 @@ async function loadNewsFromAPI() {
                 content: 'Bütün məktəbliləri 14 fevral tarixində keçiriləcək Respublika Fənn Olimpiadalarında iştirak etməyə dəvət edirik. Qeydiyyat artıq başlamışdır!',
                 image_url: '',
                 created_at: new Date().toISOString(),
-                author_name: 'Admin'
+                author_name: 'SysAdmin'
             },
             {
                 id: 102,
@@ -6503,7 +6503,7 @@ async function loadNewsFromAPI() {
                 content: 'Məktəbimizə yeni LEGO Mindstorms dəstləri gətirildi. Gəlin birlikdə robotlar yığaq!',
                 image_url: '',
                 created_at: new Date().toISOString(),
-                author_name: 'Admin'
+                author_name: 'SysAdmin'
             }
         ];
         renderNews();
@@ -6527,7 +6527,7 @@ function renderNews() {
             'mekteb': '🏫 Məktəb',
             'olimpiada': '🏆 Olimpiada',
             'idman': '⚽ İdman',
-            'elm': '🔬 Elm',
+            'science': '🔬 Elm',
             'robot': '🤖 Robot',
             'qlobal': '🌍 Qlobal'
         };
@@ -6545,7 +6545,7 @@ function renderNews() {
                     <p>${news.content}</p>
                     <div class="news-card-footer">
                         <span>📅 ${dateStr}</span>
-                        <span>✍️ ${news.author_name || 'Admin'}</span>
+                        <span>✍️ ${news.author_name || 'SysAdmin'}</span>
                     </div>
                 </div>
             </div>
@@ -6898,7 +6898,7 @@ function renderChat(forceScroll = false) {
         const timeStr = msgTime.toLocaleTimeString('az-AZ', { hour: '2-digit', minute: '2-digit' });
         const badgeMarkup = renderUserBadge(msg.userId);
         const readReceipt = isOwn ? (msg.read ? '<span style="color:#34B7F1;margin-left:5px;">✓✓</span>' : '<span style="color:#888;margin-left:5px;">✓</span>') : '';
-        // Admin can delete any message, users can only delete their own
+        // SysAdmin can delete any message, users can only delete their own
         const canDelete = isOwn || currentUserRole === 'admin';
         const deleteBtn = canDelete ? `<span class="msg-delete" onclick="deleteMessage(${msg.id}, 'chat')" style="cursor:pointer;margin-left:8px;opacity:0.5;">🗑️</span>` : '';
         // Report button (only for other users' messages, not for admins viewing)
@@ -7737,7 +7737,7 @@ function filterShopCategory(cat, btn) {
 const skillTreeData2D = {
     riyaziyyat: {
         id: 'riyaziyyat',
-        name: 'Riyaziyyat',
+        name: 'Mathematics',
         icon: '🧮',
         color: '#3B82F6',
         colorDark: '#1D4ED8',
@@ -7773,7 +7773,7 @@ const skillTreeData2D = {
     },
     tarix: {
         id: 'tarix',
-        name: 'Tarix',
+        name: 'History',
         icon: '📜',
         color: '#F59E0B',
         colorDark: '#D97706',
@@ -7783,7 +7783,7 @@ const skillTreeData2D = {
                 name: 'Qədim Dövr',
                 skills: [
                     { id: 't1', name: 'İlk sivilizasiyalar', emoji: '🏛️', requires: [], progress: 100, description: 'Mesopotamiya, Misir, Hindistan' },
-                    { id: 't2', name: 'Antik Yunanıstan', emoji: '🏺', requires: ['t1'], progress: 80, description: 'Yunan mədəniyyəti və fəlsəfəsi' },
+                    { id: 't2', name: 'Antik Yunanıstan', emoji: '🏺', requires: ['t1'], progress: 80, description: 'Yunan mədəniyyəti və philosophysi' },
                     { id: 't3', name: 'Roma İmperiyası', emoji: '⚔️', requires: ['t1'], progress: 40, description: 'Roma tarixi və mədəniyyəti' }
                 ]
             },
@@ -7797,7 +7797,7 @@ const skillTreeData2D = {
             },
             {
                 id: 'azerbaycan',
-                name: 'Azərbaycan Tarixi',
+                name: 'Azərbaycan Historyi',
                 skills: [
                     { id: 't6', name: 'Qədim Azərbaycan', emoji: '🏔️', requires: [], progress: 100, description: 'Manna, Midiya, Atropatena' },
                     { id: 't7', name: 'Səfəvilər', emoji: '👑', requires: ['t6'], progress: 65, description: 'Səfəvi dövləti tarixi' },
@@ -7834,14 +7834,14 @@ const skillTreeData2D = {
     },
     edebiyyat: {
         id: 'edebiyyat',
-        name: 'Ədəbiyyat',
+        name: 'Literature',
         icon: '📚',
         color: '#EC4899',
         colorDark: '#BE185D',
         topics: [
             {
-                id: 'klassik',
-                name: 'Klassik Ədəbiyyat',
+                id: 'classic',
+                name: 'Klassik Literature',
                 skills: [
                     { id: 'e1', name: 'Nizami Gəncəvi', emoji: '📖', requires: [], progress: 100, description: 'Xəmsə və əsərləri' },
                     { id: 'e2', name: 'Füzuli', emoji: '✒️', requires: ['e1'], progress: 60, description: 'Qəzəllər və poema' },
@@ -7850,7 +7850,7 @@ const skillTreeData2D = {
             },
             {
                 id: 'muasir',
-                name: 'Müasir Ədəbiyyat',
+                name: 'Müasir Literature',
                 skills: [
                     { id: 'e4', name: 'Sabir', emoji: '😤', requires: ['e2'], progress: 20, description: 'Satirik şeirlər' },
                     { id: 'e5', name: 'Cəlil Məmmədquluzadə', emoji: '📰', requires: ['e2'], progress: 0, description: 'Molla Nəsrəddin jurnalı' }
@@ -8394,8 +8394,8 @@ function renderTodaysTasks() {
 
     // Simulate DIM tasks
     const dimTasks = [
-        { icon: '📐', title: 'Riyaziyyat - Həndəsə', meta: 'DIM Tapşırığı', time: '20 dəq' },
-        { icon: '📜', title: 'Tarix - Roma İmperiyası', meta: 'DIM Tapşırığı', time: '15 dəq' }
+        { icon: '📐', title: 'Mathematics - Həndəsə', meta: 'DIM Tapşırığı', time: '20 dəq' },
+        { icon: '📜', title: 'History - Roma İmperiyası', meta: 'DIM Tapşırığı', time: '15 dəq' }
     ];
 
     // Personal tasks based on goal
@@ -8700,7 +8700,7 @@ function gradeTask(event, taskId) {
 // ========================================
 
 // Load classes into admin student form selector
-async function loadAdminClassSelector() {
+async function loadSysAdminClassSelector() {
     const select = document.getElementById('student-class');
     if (!select) return;
 
@@ -8732,7 +8732,7 @@ async function loadAdminClassSelector() {
     }
 }
 
-// Admin add student function
+// SysAdmin add student function
 async function adminAddStudent(event) {
     event.preventDefault();
 
@@ -8771,31 +8771,31 @@ async function adminAddStudent(event) {
         const data = await response.json();
 
         if (response.ok && data.success) {
-            showToast(data.message || 'Şagird uğurla əlavə edildi!', 'success');
+            showToast(data.message || 'Trainee uğurla əlavə edildi!', 'success');
             // Clear form
             document.getElementById('admin-add-student-form').reset();
         } else {
             showToast(data.error || 'Xəta baş verdi!', 'error');
         }
     } catch (error) {
-        console.error('Admin add student error:', error);
+        console.error('SysAdmin add student error:', error);
         showToast('Server ilə əlaqə yoxdur!', 'error');
     }
 }
 
-// Hook into showAdminPanel to load classes and reports
-const originalShowAdminPanelRef = typeof showAdminPanel === 'function' ? showAdminPanel : null;
-window.showAdminPanel = function () {
+// Hook into showSysAdminPanel to load classes and reports
+const originalShowSysAdminPanelRef = typeof showSysAdminPanel === 'function' ? showSysAdminPanel : null;
+window.showSysAdminPanel = function () {
     hideAllPanels();
     const adminPanel = document.getElementById('admin-panel');
     if (adminPanel) {
         adminPanel.classList.remove('hidden');
-        loadAdminClassSelector();
-        loadAdminReports(); // Load reports when admin panel opens
+        loadSysAdminClassSelector();
+        loadSysAdminReports(); // Load reports when admin panel opens
     }
     clearActiveNav();
-    const navAdmin = document.getElementById('nav-admin');
-    if (navAdmin) navAdmin.classList.add('active');
+    const navSysAdmin = document.getElementById('nav-admin');
+    if (navSysAdmin) navSysAdmin.classList.add('active');
 };
 
 // ========================================
@@ -8931,7 +8931,7 @@ async function submitReport(reason) {
 }
 
 // Load admin reports
-async function loadAdminReports() {
+async function loadSysAdminReports() {
     const container = document.getElementById('admin-reports-list');
     const countEl = document.getElementById('reports-count');
 
@@ -9014,7 +9014,7 @@ async function handleReportAction(reportId, action) {
                 method: 'PUT',
                 headers: { 'Content-Type': 'application/json' },
                 credentials: 'include',
-                body: JSON.stringify({ status: 'dismissed', action: 'Admin tərəfindən rədd edildi' })
+                body: JSON.stringify({ status: 'dismissed', action: 'SysAdmin tərəfindən rədd edildi' })
             });
         }
 
@@ -9043,7 +9043,7 @@ async function handleReportAction(reportId, action) {
 window.showReportModal = showReportModal;
 window.closeReportModal = closeReportModal;
 window.submitReport = submitReport;
-window.loadAdminReports = loadAdminReports;
+window.loadSysAdminReports = loadSysAdminReports;
 window.handleReportAction = handleReportAction;
 
 // ========================================

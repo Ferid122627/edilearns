@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="az">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EduTask - Təhsil Platforması</title>
+    <title>EduTask - EduAgent Platform</title>
     <link
         href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap"
         rel="stylesheet">
@@ -34,25 +34,25 @@
         <div class="login-card">
             <div class="login-brand">
                 <div class="brand-chip">EduTask</div>
-                <h2 class="brand-title">Təhsil mərkəziniz</h2>
-                <p class="brand-subtitle">Dərsləri planlaşdırın, irəliləyişi izləyin və birlikdə öyrənin.</p>
+                <h2 class="brand-title">Your Agentic Hub</h2>
+                <p class="brand-subtitle">Coordinate tasks, monitor autonomous agents, and scale learning.</p>
                 <div class="brand-metrics">
                     <div class="metric-card">
-                        <span class="metric-value">Təhlükəsiz</span>
-                        <span class="metric-label">Giriş</span>
+                        <span class="metric-value">Secure</span>
+                        <span class="metric-label">Access</span>
                     </div>
                     <div class="metric-card">
-                        <span class="metric-value">Sürətli</span>
-                        <span class="metric-label">Giriş</span>
+                        <span class="metric-value">Fast</span>
+                        <span class="metric-label">Access</span>
                     </div>
                     <div class="metric-card">
-                        <span class="metric-value">Ağıllı</span>
-                        <span class="metric-label">Alətlər</span>
+                        <span class="metric-value">Smart</span>
+                        <span class="metric-label">Tools</span>
                     </div>
                 </div>
                 <div class="brand-quote">
                     <span class="quote-icon">✨</span>
-                    <span>Hər gün kiçik addım, böyük irəliləyişdir.</span>
+                    <span>Enterprise-grade autonomous learning.</span>
                 </div>
             </div>
 
@@ -72,28 +72,28 @@
                     </div>
                     <div>
                         <div class="brand-name">EduTask</div>
-                        <div class="brand-tagline">Təhsil platforması</div>
+                        <div class="brand-tagline">Educational Platform</div>
                     </div>
                 </div>
 
                 <div id="role-selection-screen" class="login-screen">
-                    <h1 class="login-title">Xoş gəlmisiniz! 👋</h1>
-                    <p class="login-subtitle">Təhsilin gələcəyinə qoşulun</p>
+                    <h1 class="login-title">Welcome! 👋</h1>
+                    <p class="login-subtitle">Initialize Autonomous Agents</p>
 
                     <div class="login-role-grid">
                         <button class="login-role-card is-student" onclick="showLogin('student')">
                             <div class="role-icon">🎓</div>
                             <div class="role-copy">
-                                <span class="role-title">Şagird</span>
-                                <span class="role-desc">Öyrən, inkişaf et, uğur qazan</span>
+                                <span class="role-title">Trainee</span>
+                                <span class="role-desc">Learn and scale</span>
                             </div>
                             <span class="role-arrow">→</span>
                         </button>
                         <button class="login-role-card is-teacher" onclick="showLogin('teacher')">
                             <div class="role-icon">👨‍🏫</div>
                             <div class="role-copy">
-                                <span class="role-title">Müəllim</span>
-                                <span class="role-desc">Öyrət, ilhamlandır, rəhbərlik et</span>
+                                <span class="role-title">Coordinator</span>
+                                <span class="role-desc">Manage agents and trainees</span>
                             </div>
                             <span class="role-arrow">→</span>
                         </button>
@@ -104,34 +104,34 @@
                 </div>
 
                 <div id="login-screen" class="login-screen hidden">
-                    <h1 class="login-title" id="login-title">Daxil olun</h1>
-                    <p class="login-subtitle">Hesabınıza giriş edin</p>
+                    <h1 class="login-title" id="login-title">System Login</h1>
+                    <p class="login-subtitle">Authenticate to Dashboard</p>
 
                     <form id="login-form" onsubmit="handleLogin(event)">
                         <input type="hidden" id="role" name="role" value="">
 
                         <div class="login-field-group">
-                            <label class="login-label" for="username">İstifadəçi adı</label>
+                            <label class="login-label" for="username">Username</label>
                             <div class="login-field">
                                 <span class="field-icon">👤</span>
                                 <input type="text" id="username" name="username" class="login-input"
-                                    placeholder="istifadeci_adi" required>
+                                    placeholder="username" required>
                             </div>
                         </div>
 
                         <div class="login-field-group">
-                            <label class="login-label" for="password">Şifrə</label>
+                            <label class="login-label" for="password">Password</label>
                             <div class="login-field">
                                 <span class="field-icon">🔒</span>
                                 <input type="password" id="password" name="password" class="login-input"
                                     placeholder="••••••••" required onkeyup="checkCapsLock(event)">
                                 <span class="password-toggle" onclick="togglePassword()">👁️</span>
                             </div>
-                            <div id="caps-warning" class="login-caps-warning hidden">⚠️ Caps Lock açıqdır!</div>
+                            <div id="caps-warning" class="login-caps-warning hidden">⚠️ Caps Lock is ON!</div>
                         </div>
 
                         <button type="submit" class="hero-submit-btn login-submit-btn">
-                            <span class="btn-text">Daxil Ol</span>
+                            <span class="btn-text">Authenticate</span>
                             <span class="btn-spinner hidden">⏳</span>
                             <span class="btn-arrow">→</span>
                         </button>
@@ -139,7 +139,7 @@
                         <p id="error-message" class="login-error hidden"></p>
 
                         <a href="#" onclick="showRoleSelection()" class="login-back-link">
-                            ← Geri qayıt
+                            ← Go Back
                         </a>
                     </form>
                 </div>
@@ -161,32 +161,32 @@
             <nav class="sidebar-nav">
                 <a href="#" onclick="showMainPanel(); updateActiveNav(this);" id="nav-main" class="active">🏠 Əsas
                     Panel</a>
-                <a href="#" onclick="showResourcesPanel(); updateActiveNav(this);" id="nav-res">📚 Resurslar</a>
-                <a href="#" onclick="showBooksPanel(); updateActiveNav(this);" id="nav-books">📖 Kitablar</a>
-                <a href="#" onclick="showPointsPanel(); updateActiveNav(this);" id="nav-points">💎 Xallar</a>
+                <a href="#" onclick="showResourcesPanel(); updateActiveNav(this);" id="nav-res">📚 Resources</a>
+                <a href="#" onclick="showBooksPanel(); updateActiveNav(this);" id="nav-books">📖 Library</a>
+                <a href="#" onclick="showPointsPanel(); updateActiveNav(this);" id="nav-points">💎 Metrics</a>
                 <a href="#" onclick="showLeaderboardPanel(); updateActiveNav(this);" id="nav-leaderboard">🏆
-                    Liderlər</a>
-                <a href="#" onclick="showClassWallPanel(); updateActiveNav(this);" id="nav-wall">🏫 Sinif Divarı</a>
+                    Leaderboard</a>
+                <a href="#" onclick="showClassWallPanel(); updateActiveNav(this);" id="nav-wall">🏫 Team Wall</a>
                 <a href="#" onclick="showClassManagementPanel(); updateActiveNav(this);" id="nav-classes">🏫
-                    Siniflər</a>
-                <a href="#" onclick="showQuizPanel(); updateActiveNav(this);" id="nav-quiz">📝 Testlər</a>
-                <a href="#" onclick="showSelfTestPanel(); updateActiveNav(this);" id="nav-self-test">✅ Özünü Yoxla</a>
-                <a href="#" onclick="showShopPanel(); updateActiveNav(this);" id="nav-shop">🏪 Mağaza</a>
-                <a href="#" onclick="showChestsPanel(); updateActiveNav(this);" id="nav-chests">🎁 Sandıqlar</a>
-                <a href="#" onclick="showSkillTreePanel(); updateActiveNav(this);" id="nav-skills">🌳 Bacarıqlar</a>
-                <a href="#" onclick="showMyPlanPanel(); updateActiveNav(this);" id="nav-myplan">🧠 Mənim Planım</a>
+                    Teams</a>
+                <a href="#" onclick="showQuizPanel(); updateActiveNav(this);" id="nav-quiz">📝 Assessments</a>
+                <a href="#" onclick="showSelfTestPanel(); updateActiveNav(this);" id="nav-self-test">✅ Self-Audit</a>
+                <a href="#" onclick="showShopPanel(); updateActiveNav(this);" id="nav-shop">🏪 Store</a>
+                <a href="#" onclick="showChestsPanel(); updateActiveNav(this);" id="nav-chests">🎁 Vault</a>
+                <a href="#" onclick="showSkillTreePanel(); updateActiveNav(this);" id="nav-skills">🌳 Skills</a>
+                <a href="#" onclick="showMyPlanPanel(); updateActiveNav(this);" id="nav-myplan">🧠 My Blueprint</a>
                 <a href="#" onclick="showRecommendationsPanel(); updateActiveNav(this);" id="nav-recommendations">💡
-                    Tövsiyələr</a>
+                    Recommendations</a>
                 <a href="#" onclick="showLiveClassPanel(); updateActiveNav(this);" id="nav-live-class" class="hidden">📹
-                    Canlı Dərs</a>
-                <a href="#" onclick="showEduBotPanel(); updateActiveNav(this);" id="nav-edubot">🤖 EduBot</a>
+                    Live Sync</a>
+                <a href="#" onclick="showEduBotPanel(); updateActiveNav(this);" id="nav-edubot">🤖 Agent Hub</a>
                 <a href="#" onclick="showAdminPanel(); updateActiveNav(this);" id="nav-admin" class="hidden">⚙️
                     Admin</a>
-                <a href="#" onclick="showNewsPanel(); updateActiveNav(this);" id="nav-news">📰 Xəbərlər</a>
-                <a href="#" onclick="showFriendsPanel(); updateActiveNav(this);" id="nav-friends">👥 Dostlar</a>
+                <a href="#" onclick="showNewsPanel(); updateActiveNav(this);" id="nav-news">📰 Updates</a>
+                <a href="#" onclick="showFriendsPanel(); updateActiveNav(this);" id="nav-friends">👥 Network</a>
                 <a href="#" onclick="showCompetitionsPanel(); updateActiveNav(this);" id="nav-competitions">🏎️
-                    Yarışlar</a>
-                <a href="#" onclick="showChatPanel(); updateActiveNav(this);" id="nav-chat">💬 Söhbət</a>
+                    Competitions</a>
+                <a href="#" onclick="showChatPanel(); updateActiveNav(this);" id="nav-chat">💬 Comm-Link</a>
             </nav>
         </aside>
 
@@ -218,17 +218,17 @@
                         <div id="notification-badge" class="notification-badge hidden">0</div>
                         <div id="notification-dropdown" class="notification-dropdown hidden"></div>
                     </div>
-                    <div id="user-profile-clickable" class="user-profile" onclick="openProfileModal()">
+                    <div id="user-profile-clickable" class="user-profile" onclick="openProfileeModal()">
                         <div class="avatar" id="header-avatar">
                             <div class="avatar-img"
                                 style="width:40px;height:40px;border-radius:50%;overflow:hidden;display:inline-block;">
-                                <img src="avatars.png" alt="Profil"
+                                <img src="avatars.png" alt="Profile"
                                     style="width:80px;height:40px;object-fit:cover;margin-left:-40px;">
                             </div>
                         </div>
                         <div id="user-info-header" class="user-info"></div>
                     </div>
-                    <button class="logout-btn" onclick="logout()">Çıxış</button>
+                    <button class="logout-btn" onclick="logout()">Logout</button>
                 </div>
             </header>
 
@@ -236,14 +236,14 @@
                 <div id="student-panel">
                     <div id="welcome-banner" class="welcome-banner"></div>
 
-                    <!-- EduBot Report (without görade average) -->
+                    <!-- Agent Hub Report (without görade average) -->
                     <div id="edubot-report-section" class="hidden">
                         <div id="edubot-report" class="edubot-report">
-                            <h4>EduBot Hesabatı</h4>
-                            <p id="edubot-report-text">Məlumatlar yüklənir...</p>
+                            <h4>Agent Hub Report</h4>
+                            <p id="edubot-report-text">Loading telemetry...</p>
                         </div>
                         <div id="forgetting-curve-section" class="forgetting-curve-card">
-                            <h4>📚 Təkrarlama Xatırlatmaları</h4>
+                            <h4>📚 Review Reminders</h4>
                             <div id="review-reminders"></div>
                         </div>
                     </div>
@@ -253,54 +253,54 @@
                     <section id="quest-board" class="quest-board">
                         <div class="quest-header">
                             <div>
-                                <h2 class="content-section-header">Günlük Sərəncamlar</h2>
-                                <p class="quest-subtitle">Qələbə tapşırıqları, böyük mükafatlar.</p>
+                                <h2 class="content-section-header">Active Directives</h2>
+                                <p class="quest-subtitle">Execute tasks for system rewards.</p>
                             </div>
                             <div class="quest-meta">
                                 <span class="quest-badge">Streak Bonus</span>
-                                <span class="quest-badge quest-badge-alt">Xal Yüksəlişi</span>
+                                <span class="quest-badge quest-badge-alt">Score Boost</span>
                             </div>
                         </div>
                         <div id="quest-grid" class="quest-grid"></div>
                         <div class="quest-actions">
-                            <button class="quest-action-btn" onclick="showQuizPanel()">Test Başla</button>
-                            <button class="quest-action-btn alt" onclick="showEduBotPanel()">EduBot-a Sual Ver</button>
-                            <button class="quest-action-btn ghost" onclick="showClassWallPanel()">Sinif Divarına
+                            <button class="quest-action-btn" onclick="showQuizPanel()">Run Assessment</button>
+                            <button class="quest-action-btn alt" onclick="showEduBotPanel()">Agent Hub Ask</button>
+                            <button class="quest-action-btn ghost" onclick="showClassWallPanel()">Team Wallna
                                 Yaz</button>
                         </div>
                     </section>
 
-                    <h2 class="content-section-header" style="margin-top: 30px;">Aktiv Tapşırıqlar</h2>
+                    <h2 class="content-section-header" style="margin-top: 30px;">Active Processes</h2>
                     <div id="student-task-list"></div>
                 </div>
 
                 <div id="teacher-panel" class="main-layout hidden">
                     <section>
-                        <h2 class="content-section-header">Təhvil Verilmiş İşlər</h2>
+                        <h2 class="content-section-header">Submitted Processes</h2>
                         <div id="teacher-submission-list"></div>
-                        <h2 class="content-section-header" style="margin-top: 30px;">Şagird Sualları</h2>
+                        <h2 class="content-section-header" style="margin-top: 30px;">Trainee Queries</h2>
                         <div id="teacher-questions-list"></div>
                     </section>
                     <section>
-                        <h2 class="content-section-header">Yeni Tapşırıq Yarat</h2>
+                        <h2 class="content-section-header">Initialize New Directive</h2>
                         <div class="card" style="animation-delay: 0.4s;">
                             <form id="teacher-task-form">
                                 <div class="form-group">
-                                    <label>Başlıq</label>
+                                    <label>Title</label>
                                     <input type="text" id="task-title" required>
                                 </div>
                                 <div class="form-group">
-                                    <label>Açıqlama</label>
+                                    <label>Description</label>
                                     <textarea id="task-description" required></textarea>
                                 </div>
                                 <div class="form-group">
-                                    <label>Son Təhvil Tarixi</label>
+                                    <label>Deadline</label>
                                     <input type="datetime-local" id="task-deadline" required>
                                 </div>
                                 <div class="form-group">
-                                    <label>Sinif</label>
+                                    <label>Team</label>
                                     <select id="task-class" required>
-                                        <option value="">Sinif seçin</option>
+                                        <option value="">Select Team</option>
                                     </select>
                                 </div>
                                 <button type="submit" class="action-btn"
@@ -314,96 +314,96 @@
                 <div id="teacher-dashboard" class="teacher-dashboard hidden">
                     <div class="dashboard-block" onclick="showTeacherTasks()">
                         <div class="icon">📝</div>
-                        <h3>Tapşırıqlar</h3>
-                        <p>Yeni tapşırıq yarat və təhvil verilənləri yoxla</p>
+                        <h3>Directives</h3>
+                        <p>Create directives and review submissions</p>
                         <button class="action-btn"
-                            style="background:var(--primary-color);width:auto;padding:10px 20px;">Keçid Et</button>
+                            style="background:var(--primary-color);width:auto;padding:10px 20px;">Access</button>
                     </div>
                     <div class="dashboard-block" onclick="showResourcesPanel()">
                         <div class="icon">📚</div>
-                        <h3>Resurslar</h3>
-                        <p>Tədris materialları əlavə et və idarə et</p>
+                        <h3>Resources</h3>
+                        <p>Manage learning resources</p>
                         <button class="action-btn"
-                            style="background:var(--secondary-color);width:auto;padding:10px 20px;">Keçid Et</button>
+                            style="background:var(--secondary-color);width:auto;padding:10px 20px;">Access</button>
                     </div>
                     <div class="dashboard-block" onclick="showQuizPanel()">
                         <div class="icon">❓</div>
-                        <h3>Testlər</h3>
-                        <p>Yeni test yarat və nəticələri izlə</p>
+                        <h3>Assessments</h3>
+                        <p>Initialize assessments and track metrics</p>
                         <button class="action-btn"
-                            style="background:var(--warning-color);width:auto;padding:10px 20px;">Keçid Et</button>
+                            style="background:var(--warning-color);width:auto;padding:10px 20px;">Access</button>
                     </div>
                     <div class="dashboard-block" onclick="showClassManagementPanel()">
                         <div class="icon">🏫</div>
-                        <h3>Sinif İdarəçiliyi</h3>
-                        <p>Şagirdləri idarə et və statistikalarını gör</p>
+                        <h3>Team Management</h3>
+                        <p>Manage trainees and view telemetry</p>
                         <button class="action-btn"
-                            style="background:var(--primary-color);width:auto;padding:10px 20px;">Keçid Et</button>
+                            style="background:var(--primary-color);width:auto;padding:10px 20px;">Access</button>
                     </div>
                     <div class="dashboard-block" onclick="showClassWallPanel()">
                         <div class="icon">📋</div>
-                        <h3>Sinif Divarı</h3>
-                        <p>Şagirdlərlə Ünsiyyət qur və paylaşımları idarə et</p>
+                        <h3>Team Wall</h3>
+                        <p>Communicate with team and manage posts</p>
                         <button class="action-btn"
-                            style="background:var(--secondary-color);width:auto;padding:10px 20px;">Keçid Et</button>
+                            style="background:var(--secondary-color);width:auto;padding:10px 20px;">Access</button>
                     </div>
                     <div class="dashboard-block" onclick="showLeaderboardPanel()">
                         <div class="icon">🏆</div>
-                        <h3>Liderlər Siyahısı</h3>
-                        <p>Şagirdlərin performansını müqayisə et</p>
+                        <h3>Leaderboard</h3>
+                        <p>Compare trainee metrics</p>
                         <button class="action-btn"
-                            style="background:var(--warning-color);width:auto;padding:10px 20px;">Keçid Et</button>
+                            style="background:var(--warning-color);width:auto;padding:10px 20px;">Access</button>
                     </div>
                     <div class="dashboard-block" onclick="showLiveClassPanel()">
                         <div class="icon">📹</div>
-                        <h3>Canlı Dərs</h3>
-                        <p>Virtual sinif yaradın və idarə edin</p>
+                        <h3>Live Sync</h3>
+                        <p>Create and manage virtual syncs</p>
                         <button class="action-btn"
-                            style="background:var(--primary-color);width:auto;padding:10px 20px;">Keçid Et</button>
+                            style="background:var(--primary-color);width:auto;padding:10px 20px;">Access</button>
                     </div>
                 </div>
 
-                <!-- Admin: Şagird Əlavə Et bölməsi (yalnız admin üçün görünür) -->
+                <!-- Admin: Add Trainee bölməsi (yalnız admin üçün görünür) -->
                 <div id="admin-add-student-section" class="hidden" style="margin-top: 30px;">
-                    <h2 class="content-section-header">➕ Yeni Şagird Əlavə Et</h2>
+                    <h2 class="content-section-header">➕ Add New Trainee</h2>
                     <div class="card" style="max-width: 600px;">
                         <form id="admin-add-student-form" onsubmit="adminAddStudent(event)">
                             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
                                 <div class="form-group">
-                                    <label>Şagirdin Adı</label>
+                                    <label>Trainee First Name</label>
                                     <input type="text" id="student-first-name" required placeholder="Ad">
                                 </div>
                                 <div class="form-group">
-                                    <label>Şagirdin Soyadı</label>
+                                    <label>Trainee Last Name</label>
                                     <input type="text" id="student-last-name" required placeholder="Soyad">
                                 </div>
                             </div>
                             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
                                 <div class="form-group">
-                                    <label>Doğum Tarixi</label>
+                                    <label>Date of Birth</label>
                                     <input type="date" id="student-birthday" required>
                                 </div>
                                 <div class="form-group">
-                                    <label>Sinif</label>
+                                    <label>Team</label>
                                     <select id="student-class" required>
-                                        <option value="">Sinif seçin</option>
+                                        <option value="">Select Team</option>
                                     </select>
                                 </div>
                             </div>
                             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
                                 <div class="form-group">
-                                    <label>İstifadəçi Adı (Login)</label>
-                                    <input type="text" id="student-username" required placeholder="istifadeci_adi"
-                                        pattern="[a-z0-9_]+" title="Yalnız kiçik hərf, rəqəm və alt xətt">
+                                    <label>Username (Login)</label>
+                                    <input type="text" id="student-username" required placeholder="username"
+                                        pattern="[a-z0-9_]+" title="Lowercase, numbers, and underscores only">
                                 </div>
                                 <div class="form-group">
-                                    <label>Şifrə</label>
-                                    <input type="text" id="student-password" required placeholder="Şifrə" minlength="4">
+                                    <label>Password</label>
+                                    <input type="text" id="student-password" required placeholder="Password" minlength="4">
                                 </div>
                             </div>
                             <button type="submit" class="action-btn"
                                 style="background: linear-gradient(135deg, #667eea, #764ba2); width: 100%; padding: 12px 20px; font-size: 16px;">
-                                ➕ Şagird Əlavə Et
+                                ➕ Add Trainee
                             </button>
                         </form>
                     </div>
@@ -412,19 +412,19 @@
             </main>
 
             <main id="resources-panel" class="resources-area hidden">
-                <h2 class="content-section-header">Tədris Resursları</h2>
+                <h2 class="content-section-header">Educational Resources</h2>
                 <div class="oer-tabs">
-                    <div class="oer-tab active" onclick="switchOERTab('local', this)">Yerli Resurslar</div>
-                    <div class="oer-tab" onclick="switchOERTab('global', this)">Qlobal OER Kitabxanası</div>
+                    <div class="oer-tab active" onclick="switchOERTab('local', this)">Local Resources</div>
+                    <div class="oer-tab" onclick="switchOERTab('global', this)">Global OER Library</div>
                 </div>
                 <div class="main-layout">
                     <section id="resources-list-section"></section>
                     <section id="add-resource-section" class="hidden">
                         <div class="card" style="animation-delay: 0.1s;">
-                            <h3>Yeni Resurs Əlavə Et</h3>
+                            <h3>Add New Resource</h3>
                             <form id="add-resource-form">
                                 <div class="form-group">
-                                    <label>Başlıq</label>
+                                    <label>Title</label>
                                     <input type="text" id="resource-title" required>
                                 </div>
                                 <div class="form-group">
@@ -433,12 +433,12 @@
                                         placeholder="https://example.com/fayl.pdf">
                                 </div>
                                 <div class="form-group">
-                                    <label>Açıqlama</label>
+                                    <label>Description</label>
                                     <textarea id="resource-description"></textarea>
                                 </div>
                                 <button type="submit" class="action-btn"
                                     style="background:var(--primary-color);">Resursu
-                                    Əlavə Et</button>
+                                    Add</button>
                             </form>
                         </div>
                     </section>
@@ -449,10 +449,10 @@
                 <div class="points-badges-container">
                     <div id="points-display" class="points-display">
                         <h2 id="user-points">0</h2>
-                        <p>Ümumi Xallarınız</p>
+                        <p>Total Metrics</p>
                     </div>
                     <div class="badges-section">
-                        <h3>Nişanlarınız</h3>
+                        <h3>Your Badges</h3>
                         <div id="badges-container" class="badges-grid"></div>
                     </div>
                 </div>
@@ -463,27 +463,27 @@
                     <div class="shop-balance-card">
                         <div class="balance-icon">💎</div>
                         <div class="balance-info">
-                            <span class="balance-label">Balansınız</span>
+                            <span class="balance-label">Your Balance</span>
                             <span class="balance-amount" id="shop-user-points">0</span>
                         </div>
                     </div>
-                    <h2>🏪 Virtual Mükafat Mağazası</h2>
+                    <h2>🏪 Virtual Reward Store</h2>
                 </div>
 
                 <!-- Shop Categories -->
                 <div class="shop-categories">
-                    <button class="shop-cat-btn active" onclick="filterShopCategory('all', this)">🛍️ Hamısı</button>
-                    <button class="shop-cat-btn" onclick="filterShopCategory('avatar', this)">👤 Avatarlar</button>
-                    <button class="shop-cat-btn" onclick="filterShopCategory('theme', this)">🎨 Temalar</button>
-                    <button class="shop-cat-btn" onclick="filterShopCategory('badge', this)">🏅 Nişanlar</button>
-                    <button class="shop-cat-btn" onclick="filterShopCategory('boost', this)">⚡ Boostlar</button>
+                    <button class="shop-cat-btn active" onclick="filterShopCategory('all', this)">🛍️ All</button>
+                    <button class="shop-cat-btn" onclick="filterShopCategory('avatar', this)">👤 Avatars</button>
+                    <button class="shop-cat-btn" onclick="filterShopCategory('theme', this)">🎨 Themes</button>
+                    <button class="shop-cat-btn" onclick="filterShopCategory('badge', this)">🏅 Badges</button>
+                    <button class="shop-cat-btn" onclick="filterShopCategory('boost', this)">⚡ Boosts</button>
                 </div>
 
                 <!-- Chests Moved to Separate Panel -->
 
                 <!-- Featured Items -->
                 <div class="shop-featured">
-                    <h3>✨ Seçilmiş Məhsullar</h3>
+                    <h3>✨ Featured Items</h3>
                     <div id="featured-items" class="featured-items-grid">
                         <!-- Populated by JS -->
                     </div>
@@ -491,7 +491,7 @@
 
                 <!-- All Items Grid -->
                 <div class="shop-all-items">
-                    <h3>🛒 Bütün Məhsullar</h3>
+                    <h3>🛒 All Items</h3>
                     <div id="shop-items" class="shop-grid">
                         <!-- Populated by JS -->
                     </div>
@@ -499,7 +499,7 @@
 
                 <!-- Purchase History -->
                 <div class="shop-history">
-                    <h3>📜 Satın Alma Tarixçəsi</h3>
+                    <h3>📜 Purchase History</h3>
                     <div id="purchase-history" class="purchase-history-list">
                         <!-- Populated by JS -->
                     </div>
@@ -508,16 +508,16 @@
 
             <main id="chests-panel" class="chests-area hidden">
                 <div class="shop-header">
-                    <h2>🎁 Sandıqlar</h2>
+                    <h2>🎁 Vault</h2>
                     <div class="shop-balance-card">
                         <div class="balance-info">
-                            <span class="balance-label">Balansınız</span>
+                            <span class="balance-label">Your Balance</span>
                             <span class="balance-amount" id="chest-user-points">0</span>
                         </div>
                     </div>
                 </div>
                 <div class="shop-chests" style="margin-top:20px;">
-                    <p class="chests-subtitle">Şanslı mükafatlar qazan!</p>
+                    <p class="chests-subtitle">Win lucky rewards!</p>
                     <div id="chest-grid" class="chest-grid">
                         <!-- Populated by JS -->
                     </div>
@@ -525,29 +525,29 @@
             </main>
 
             <main id="recommendations-panel" class="recommendations-area hidden">
-                <h2 class="content-section-header">Sizin Üçün Tövsiyələr</h2>
+                <h2 class="content-section-header">Recommendations for You</h2>
                 <div id="recommendations-list"></div>
             </main>
 
             <main id="leaderboard-panel" class="leaderboard-area hidden">
-                <h2 class="content-section-header">Həftənin Ulduzları</h2>
+                <h2 class="content-section-header">Stars of the Week</h2>
                 <div id="leaderboard-podium" class="leaderboard-podium"></div>
                 <div class="card">
-                    <h3>Tam Siyahı</h3>
+                    <h3>Full List</h3>
                     <div id="full-leaderboard"></div>
                 </div>
             </main>
 
             <main id="class-wall-panel" class="class-wall-area hidden">
                 <div class="class-wall-header">
-                    <h2 class="content-section-header">10F Sinif Divarı</h2>
+                    <h2 class="content-section-header">10F Team Wall</h2>
                 </div>
                 <div id="post-form-section" class="post-form hidden">
                     <form id="wall-post-form">
-                        <textarea id="post-content" placeholder="Dərslə bağlı maraqlı bir şey paylaş..."
+                        <textarea id="post-content" placeholder="Share something interesting about the directive..."
                             required></textarea>
                         <button type="submit" class="action-btn"
-                            style="background:var(--primary-color);width:auto;padding:10px 20px;">Paylaş</button>
+                            style="background:var(--primary-color);width:auto;padding:10px 20px;">Post</button>
                     </form>
                 </div>
                 <div id="wall-posts"></div>
@@ -555,13 +555,13 @@
 
             <main id="chat-panel" class="chat-area hidden">
                 <div class="chat-container">
-                    <div class="chat-header">Sinif Söhbəti</div>
+                    <div class="chat-header">Team Comm-Link</div>
                     <div id="chat-messages" class="chat-messages">
                         <!-- Messages populated by JS -->
                     </div>
                     <form id="chat-form" onsubmit="sendChatMessage(event)" class="chat-form">
                         <div class="chat-input-container">
-                            <input type="text" id="chat-input" placeholder="Mesajınızı yazın..." autocomplete="off">
+                            <input type="text" id="chat-input" placeholder="Type your message..." autocomplete="off">
                             <button type="submit" class="chat-send-btn">
                                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                     stroke-width="2">
@@ -574,46 +574,46 @@
             </main>
 
             <main id="class-management-panel" class="class-management-area hidden">
-                <h2 class="content-section-header">Sinif İdarəçiliyi</h2>
+                <h2 class="content-section-header">Team Management</h2>
                 <div class="class-tabs" id="class-tabs-container"></div>
                 <div id="current-class-students" class="students-grid"></div>
             </main>
 
             <main id="live-class-panel" class="live-class-area hidden">
-                <h2 class="content-section-header">Canlı Dərs İdarəçiliyi</h2>
+                <h2 class="content-section-header">Live Sync Management</h2>
                 <div id="teacher-live-class-section" class="hidden">
                     <div class="live-class-form">
-                        <h3>Yeni Görüş Yarat</h3>
+                        <h3>Initialize New Sync</h3>
                         <form id="live-class-form">
                             <div class="form-group">
-                                <label>Görüş Başlığı</label>
-                                <input type="text" id="meeting-title" required placeholder="Məsələn: Riyaziyyat Dərsi">
+                                <label>Sync Title</label>
+                                <input type="text" id="meeting-title" required placeholder="e.g. Mathematics Module">
                             </div>
                             <div class="form-group">
-                                <label>Tarix və Vaxt</label>
+                                <label>Date & Time</label>
                                 <input type="datetime-local" id="meeting-datetime" required>
                             </div>
                             <div class="form-group">
-                                <label>Sinif</label>
+                                <label>Team</label>
                                 <select id="meeting-class" required>
-                                    <option value="">Sinif seçin</option>
+                                    <option value="">Select Team</option>
                                 </select>
                             </div>
                             <div class="form-group">
                                 <label>Platform</label>
                                 <select id="meeting-platform" required>
-                                    <option value="">Platform seçin</option>
+                                    <option value="">Select Platform</option>
                                     <option value="zoom">Zoom</option>
                                     <option value="meet">Google Meet</option>
                                     <option value="teams">Microsoft Teams</option>
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label>Görüş Linki</label>
+                                <label>Sync Link</label>
                                 <input type="url" id="meeting-link" required placeholder="https://zoom.us/j/...">
                             </div>
                             <button type="submit" class="action-btn" style="background:var(--primary-color);">Görüş
-                                Yarat</button>
+                                Create</button>
                         </form>
                     </div>
                     <div id="active-meetings"></div>
@@ -628,39 +628,39 @@
                 <div id="teacher-quiz-section" class="hidden">
                     <div class="main-layout">
                         <section>
-                            <h2 class="content-section-header">Mövcud Testlər</h2>
+                            <h2 class="content-section-header">Available Assessments</h2>
                             <div id="quiz-list" class="quiz-list"></div>
                         </section>
                         <section>
-                            <h2 class="content-section-header">Yeni Test Yarat</h2>
+                            <h2 class="content-section-header">Initialize New Assessment</h2>
                             <div class="card">
                                 <form id="quiz-form">
                                     <div class="form-group">
-                                        <label>Test Başlığı</label>
+                                        <label>Assessment Title</label>
                                         <input type="text" id="quiz-title" required>
                                     </div>
                                     <div class="form-group">
-                                        <label>Sinif</label>
+                                        <label>Team</label>
                                         <select id="quiz-class" required>
-                                            <option value="">Sinif seçin</option>
+                                            <option value="">Select Team</option>
                                         </select>
                                     </div>
                                     <div id="questions-container">
-                                        <h4>Suallar</h4>
+                                        <h4>Queries</h4>
                                     </div>
                                     <button type="button" onclick="addQuestion()" class="action-btn"
                                         style="background:var(--secondary-color);width:auto;padding:10px 20px;margin-bottom:15px;">Sual
-                                        Əlavə Et</button>
+                                        Add</button>
                                     <button type="submit" class="action-btn"
                                         style="background:var(--primary-color);">Testi
-                                        Yarat</button>
+                                        Create</button>
                                 </form>
                             </div>
                         </section>
                     </div>
                 </div>
                 <div id="student-quiz-section" class="hidden">
-                    <h2 class="content-section-header">Mövcud Testlər</h2>
+                    <h2 class="content-section-header">Available Assessments</h2>
                     <div id="student-quiz-list"></div>
                     <div id="quiz-taking-area" class="hidden">
                         <div class="card">
@@ -671,30 +671,30 @@
             </main>
 
             <main id="self-test-panel" class="self-test-area hidden">
-                <h2 class="content-section-header">Özünü Yoxla</h2>
+                <h2 class="content-section-header">Self-Audit</h2>
                 <div class="card">
                     <form id="self-test-form">
                         <div class="form-group">
-                            <label>Fənn</label>
-                            <input type="text" id="subject" placeholder="Məsələn: Tarix, Riyaziyyat, Fizika..."
+                            <label>Subject</label>
+                            <input type="text" id="subject" placeholder="e.g. History, Math, Physics..."
                                 required>
                         </div>
                         <div class="form-group">
-                            <label>Mövzu</label>
+                            <label>Topic</label>
                             <textarea id="topic"
                                 placeholder="Məsələn: Səfəvilər dövləti, Kvadrat tənliklər, Mexanika qanunları..."
                                 required></textarea>
                         </div>
                         <div class="form-group">
-                            <label>Çətinlik Səviyyəsi</label>
+                            <label>Difficulty Level</label>
                             <div class="difficulty-selector">
-                                <div class="difficulty-btn easy" onclick="selectDifficulty('easy', this)">Asan</div>
-                                <div class="difficulty-btn medium" onclick="selectDifficulty('medium', this)">Orta</div>
-                                <div class="difficulty-btn hard" onclick="selectDifficulty('hard', this)">Çətin</div>
+                                <div class="difficulty-btn easy" onclick="selectDifficulty('easy', this)">Easy</div>
+                                <div class="difficulty-btn medium" onclick="selectDifficulty('medium', this)">Medium</div>
+                                <div class="difficulty-btn hard" onclick="selectDifficulty('hard', this)">Hard</div>
                             </div>
                         </div>
                         <button type="submit" class="action-btn" style="background:var(--primary-color);">Test
-                            Yarat</button>
+                            Create</button>
                     </form>
                 </div>
                 <div id="self-test-results" class="hidden">
@@ -708,40 +708,40 @@
                 <div class="welcome-banner admin-banner">
                     <div>
                         <h1>Admin Panel</h1>
-                        <p>Sistem idarəçiliyi və konfiqurasiya</p>
+                        <p>System administration and configuration</p>
                     </div>
                 </div>
 
                 <div class="admin-section">
-                    <h2 class="content-section-header">Şagird Əlavə Et</h2>
+                    <h2 class="content-section-header">Add Trainee</h2>
                     <div class="card">
                         <form id="admin-add-student-form" onsubmit="adminAddStudent(event)">
                             <div class="form-group">
-                                <label>Şagirdin Adı</label>
+                                <label>Trainee First Name</label>
                                 <input type="text" id="student-first-name" required placeholder="Ad">
                             </div>
                             <div class="form-group">
-                                <label>Şagirdin Soyadı</label>
+                                <label>Trainee Last Name</label>
                                 <input type="text" id="student-last-name" required placeholder="Soyad">
                             </div>
                             <div class="form-group">
-                                <label>Doğum Tarixi</label>
+                                <label>Date of Birth</label>
                                 <input type="date" id="student-birthday" required>
                             </div>
                             <div class="form-group">
-                                <label>Sinif</label>
+                                <label>Team</label>
                                 <select id="student-class" required>
-                                    <option value="">Sinif seçin</option>
+                                    <option value="">Select Team</option>
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label>İstifadəçi Adı (Login)</label>
-                                <input type="text" id="student-username" required placeholder="istifadeci_adi"
-                                    pattern="[a-z0-9_]+" title="Yalnız kiçik hərf, rəqəm və alt xətt">
+                                <label>Username (Login)</label>
+                                <input type="text" id="student-username" required placeholder="username"
+                                    pattern="[a-z0-9_]+" title="Lowercase, numbers, and underscores only">
                             </div>
                             <div class="form-group">
-                                <label>Şifrə</label>
-                                <input type="text" id="student-password" required placeholder="Şifrə" minlength="4">
+                                <label>Password</label>
+                                <input type="text" id="student-password" required placeholder="Password" minlength="4">
                             </div>
                             <button type="submit" class="action-btn"
                                 style="background:var(--admin-color);width:auto;padding:10px 20px;">➕ Şagird Əlavə
@@ -751,11 +751,11 @@
                 </div>
 
                 <div class="admin-section">
-                    <h2 class="content-section-header">Sinif İdarəçiliyi</h2>
+                    <h2 class="content-section-header">Team Management</h2>
                     <div class="class-management-form">
                         <form id="add-class-form">
                             <div class="form-group">
-                                <label>Yeni Sinif Adı</label>
+                                <label>New Team Name</label>
                                 <input type="text" id="new-class-name" placeholder="Məsələn: 12A" required
                                     pattern="^(1[0-1]|[1-9])[A-Z]$" title="Format: 1A-11Z arası">
                             </div>
@@ -766,13 +766,13 @@
                     </div>
 
                     <div class="card">
-                        <h3>Mövcud Siniflər</h3>
+                        <h3>Existing Teams</h3>
                         <div id="admin-classes-list"></div>
                     </div>
                 </div>
 
                 <div class="admin-section">
-                    <h2 class="content-section-header">Sistem Statistikaları</h2>
+                    <h2 class="content-section-header">System Telemetry</h2>
                     <div class="stats-grid">
                         <div class="stat-card">
                             <div class="icon" style="background:#e3e7fe;">
@@ -786,7 +786,7 @@
                             </div>
                             <div class="info">
                                 <h3 id="total-students">0</h3>
-                                <p>Ümumi Şagird</p>
+                                <p>Total Trainees</p>
                             </div>
                         </div>
                         <div class="stat-card">
@@ -799,7 +799,7 @@
                             </div>
                             <div class="info">
                                 <h3 id="total-assignments">0</h3>
-                                <p>Ümumi Tapşırıq</p>
+                                <p>Total Directives</p>
                             </div>
                         </div>
                         <div class="stat-card">
@@ -812,7 +812,7 @@
                             </div>
                             <div class="info">
                                 <h3 id="total-quizzes">0</h3>
-                                <p>Ümumi Test</p>
+                                <p>Total Tests</p>
                             </div>
                         </div>
                     </div>
@@ -820,14 +820,14 @@
 
                 <!-- Message Reports Section -->
                 <div class="admin-section">
-                    <h2 class="content-section-header">⚠️ Mesaj Şikayətləri</h2>
+                    <h2 class="content-section-header">⚠️ Message Reports</h2>
                     <div class="card">
                         <div class="reports-header"
                             style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
                             <span id="reports-count" style="color: #666;">Yüklənir...</span>
                             <button onclick="loadAdminReports()" class="action-btn"
                                 style="background: var(--admin-color); width: auto; padding: 8px 15px;">
-                                Yenilə
+                                Refresh
                             </button>
                         </div>
                         <div id="admin-reports-list">
@@ -838,7 +838,7 @@
 
                 <!-- Blacklist Management Section -->
                 <div class="admin-section">
-                    <h2 class="content-section-header"> Qadağan Olunmuş Sözlər (Blacklist)</h2>
+                    <h2 class="content-section-header"> Blacklisted Words (Blacklist)</h2>
                     <div class="card">
                         <div class="blacklist-controls"
                             style="display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap;">
@@ -856,21 +856,59 @@
                 </div>
             </main>
 
-            <main id="edubot-panel" class="edubot-area hidden">
-                <div class="edubot-container">
-                    <div class="edubot-header">EduBot Köməkçi</div>
-                    <div id="edubot-chat-window" class="edubot-chat-window"></div>
-                    <form id="edubot-input-form" class="edubot-input-form">
-                        <input type="text" id="edubot-user-input" placeholder="Sualını bura yaz..." autocomplete="off">
-                        <button type="submit">Göndər</button>
-                    </form>
+            
+    <main id="edubot-panel" class="edubot-area hidden">
+        <h2 class="content-section-header">Agent Hub: Autonomous Core</h2>
+        <div class="agent-hub-container">
+            <div class="agent-card">
+                <div class="agent-icon pulsing-blue">🤖</div>
+                <h3>Tutor Agent</h3>
+                <p>Status: <span class="status-scanning">Scanning for resources...</span></p>
+                <div class="agent-log">
+                    <p>> Querying Khan Academy API...</p>
+                    <p>> Compiling study plan based on latest metrics...</p>
+                    <p class="blink">_</p>
                 </div>
-            </main>
+            </div>
+            <div class="agent-card">
+                <div class="agent-icon pulsing-purple">⚙️</div>
+                <h3>Evaluator Agent</h3>
+                <p>Status: <span class="status-idle">Idle / Ready</span></p>
+                <div class="agent-log">
+                    <p>> Awaiting new submissions...</p>
+                    <p>> Plagiarism scanner: Online</p>
+                </div>
+            </div>
+            <div class="agent-card">
+                <div class="agent-icon pulsing-green">📡</div>
+                <h3>Coordinator Agent</h3>
+                <p>Status: <span class="status-active">Active</span></p>
+                <div class="agent-log">
+                    <p>> Synchronizing team schedules...</p>
+                    <p>> Generating metric reports...</p>
+                </div>
+            </div>
+        </div>
+        <div class="edubot-chat-wrapper" style="margin-top: 30px;">
+            <div id="edubot-chat-window" class="chat-messages">
+                <div class="chat-message bot">
+                    <div class="msg-content">System initialized. Awaiting manual override or direct inquiry.</div>
+                </div>
+            </div>
+            <form id="edubot-input-form" onsubmit="sendEduBotMessage(event)" class="chat-form">
+                <div class="chat-input-container">
+                    <input type="text" id="edubot-user-input" placeholder="Enter manual directive..." autocomplete="off">
+                    <button type="submit" class="chat-send-btn">Send Directive</button>
+                </div>
+            </form>
+        </div>
+    </main>
+    
 
             <section id="skill-tree-panel" class="panel hidden">
                 <!-- Header -->
                 <div class="skill-tree-header">
-                    <h2>🌳 Bacarıqlar Ağacı</h2>
+                    <h2>🌳 Skills Ağacı</h2>
                     <p class="skill-tree-subtitle">Öyrənmə səyahətində harada olduğunu gör!</p>
                 </div>
 
@@ -902,7 +940,7 @@
                 </div>
             </section>
 
-            <!-- Mənim Planım (My Plan) Panel -->
+            <!-- My Blueprint (My Plan) Panel -->
             <section id="myplan-panel" class="panel hidden">
                 <!-- Onboarding Wizard -->
                 <div id="myplan-onboarding" class="myplan-onboarding">
@@ -920,7 +958,7 @@
                     <!-- Step 1: Welcome -->
                     <div class="onboarding-step active" data-step="1">
                         <div class="onboarding-icon">🧠</div>
-                        <h2>Mənim Planım</h2>
+                        <h2>My Blueprint</h2>
                         <p class="onboarding-subtitle">Şəxsi AI Coach ilə tanış ol!</p>
                         <div class="onboarding-message">
                             <p>Bu hissə sənin şəxsi məqsədlərin üçündür.</p>
@@ -1023,7 +1061,7 @@
                         <div class="onboarding-nav">
                             <button class="onboarding-btn secondary" onclick="goToOnboardingStep(3)">← Geri</button>
                             <button class="onboarding-btn" onclick="completeOnboarding()" id="complete-btn"
-                                disabled>Planı Yarat 🚀</button>
+                                disabled>Planı Create 🚀</button>
                         </div>
                     </div>
                 </div>
@@ -1033,7 +1071,7 @@
                     <!-- Header -->
                     <div class="myplan-header">
                         <div class="myplan-title-section">
-                            <h2>🧠 Mənim Planım</h2>
+                            <h2>🧠 My Blueprint</h2>
                             <p class="myplan-subtitle">Şəxsi AI Coach</p>
                         </div>
                         <button class="myplan-settings-btn" onclick="resetMyPlan()">⚙️ Yenidən Qur</button>
@@ -1103,18 +1141,18 @@
             <!-- News Panel -->
             <section id="news-panel" class="panel hidden">
                 <div class="news-area">
-                    <h2> 📰 Xəbərlər</h2>
+                    <h2> 📰 Updates</h2>
 
                     <!-- Admin News Form (only visible to admin) -->
                     <div id="admin-news-form" class="admin-news-form hidden">
-                        <h3>Yeni Xəbər Əlavə Et</h3>
+                        <h3>Yeni Xəbər Add</h3>
                         <form onsubmit="addNews(event)">
                             <div class="form-group">
-                                <label>Başlıq</label>
+                                <label>Title</label>
                                 <input type="text" id="news-title" required placeholder="Xəbərin başlığı...">
                             </div>
                             <div class="form-group">
-                                <label>Kateqoriya</label>
+                                <label>Category</label>
                                 <select id="news-category" required>
                                     <option value="mekteb">Məktəb</option>
                                     <option value="olimpiada">Olimpiada</option>
@@ -1140,7 +1178,7 @@
 
                     <!-- News Filters -->
                     <div class="news-filters">
-                        <button class="news-filter-btn active" onclick="filterNews('all', this)">Hamısı</button>
+                        <button class="news-filter-btn active" onclick="filterNews('all', this)">All</button>
                         <button class="news-filter-btn" onclick="filterNews('mekteb', this)">🏫 Məktəb</button>
                         <button class="news-filter-btn" onclick="filterNews('olimpiada', this)">🏆 Olimpiada</button>
                         <button class="news-filter-btn" onclick="filterNews('idman', this)">⚽ İdman</button>
@@ -1160,7 +1198,7 @@
             <section id="books-panel" class="panel hidden">
                 <div class="books-area">
                     <div class="books-header">
-                        <h2>📖 Kitablar</h2>
+                        <h2>📖 Library</h2>
                         <div class="books-search">
                             <input type="text" id="book-search" placeholder="Kitab axtar..."
                                 oninput="filterBooks(this.value)">
@@ -1169,7 +1207,7 @@
 
                     <!-- Book Categories -->
                     <div class="book-categories">
-                        <button class="book-cat-btn active" onclick="filterBookCategory('all', this)">Hamısı</button>
+                        <button class="book-cat-btn active" onclick="filterBookCategory('all', this)">All</button>
                         <button class="book-cat-btn" onclick="filterBookCategory('fəlsəfə', this)">🤔 Fəlsəfə</button>
                         <button class="book-cat-btn" onclick="filterBookCategory('klassik', this)">📜 Klassik</button>
                         <button class="book-cat-btn" onclick="filterBookCategory('elm', this)">🔬 Elmi</button>
@@ -1194,18 +1232,18 @@
 
                     <!-- Admin Book Form (hidden for students) -->
                     <div id="admin-book-form" class="admin-book-form hidden">
-                        <h3>➕ Yeni Kitab Əlavə Et</h3>
+                        <h3>➕ Yeni Kitab Add</h3>
                         <form onsubmit="addNewBook(event)">
                             <div class="form-group">
-                                <label>Kitab Adı</label>
+                                <label>Book Title</label>
                                 <input type="text" id="new-book-title" required>
                             </div>
                             <div class="form-group">
-                                <label>Müəllif</label>
+                                <label>Author</label>
                                 <input type="text" id="new-book-author" required>
                             </div>
                             <div class="form-group">
-                                <label>Kateqoriya</label>
+                                <label>Category</label>
                                 <select id="new-book-category" required>
                                     <option value="fəlsəfə">Fəlsəfə</option>
                                     <option value="klassik">Klassik</option>
@@ -1214,15 +1252,15 @@
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label>Qısa Təsvir</label>
+                                <label>Short Description</label>
                                 <textarea id="new-book-desc" rows="2" required></textarea>
                             </div>
                             <div class="form-group">
-                                <label>Ətraflı Xülasə</label>
+                                <label>Detailed Summary</label>
                                 <textarea id="new-book-summary" rows="6" required></textarea>
                             </div>
                             <button type="submit" class="action-btn" style="background: var(--primary-color);">Kitab
-                                Əlavə Et</button>
+                                Add</button>
                         </form>
                     </div>
                 </div>
@@ -1235,9 +1273,9 @@
                     <div class="book-modal-header">
                         <div class="book-modal-icon" id="book-modal-icon">📖</div>
                         <div class="book-modal-info">
-                            <h2 id="book-modal-title">Kitab Adı</h2>
-                            <p class="book-author" id="book-modal-author">Müəllif</p>
-                            <span class="book-category-badge" id="book-modal-category">Kateqoriya</span>
+                            <h2 id="book-modal-title">Book Title</h2>
+                            <p class="book-author" id="book-modal-author">Author</p>
+                            <span class="book-category-badge" id="book-modal-category">Category</span>
                         </div>
                     </div>
                     <div class="book-modal-body">
@@ -1260,7 +1298,7 @@
             <!-- Friends Panel - Enhanced -->
             <section id="friends-panel" class="panel hidden">
                 <div class="friends-panel">
-                    <h2>👥 Dostlar</h2>
+                    <h2>👥 Network</h2>
                     <p>Sinif yoldaşlarını izlə və onların tərəqqisini gör!</p>
 
                     <!-- Friend Streak Section -->
@@ -1289,7 +1327,7 @@
             <!-- Competitions Panel -->
             <section id="competitions-panel" class="panel hidden">
                 <div class="competitions-panel">
-                    <h2>🏆 Həftəlik Yarışlar</h2>
+                    <h2>🏆 Weekly Competitions</h2>
                     <div id="competition-content">
                         <!-- Populated by JS -->
                     </div>
@@ -1299,9 +1337,9 @@
             <!-- Chat Panel -->
             <section id="chat-panel" class="panel hidden">
                 <div style="padding: 20px;">
-                    <h2>💬 Sinif Söhbəti</h2>
+                    <h2>💬 Team Comm-Link</h2>
                     <div class="chat-panel">
-                        <div class="chat-header">10F Sinfi Söhbəti</div>
+                        <div class="chat-header">10F Sinfi Comm-Linki</div>
                         <div id="chat-messages" class="chat-messages">
                             <!-- Populated by JS -->
                         </div>
@@ -1319,25 +1357,25 @@
                     <div class="footer-section">
                         <h4>EduTask</h4>
                         <ul>
-                            <li><a href="#" onclick="showMissionModal()"> 🚀 Bizim Missiyamız</a></li>
-                            <li><a href="#" onclick="showEduBotInfoModal()"> 🤖 EduBot Köməkçi haqqında</a></li>
-                            <li><a href="#" onclick="showLeaderboardPanel()">🏆 Liderlər Cədvəli</a></li>
+                            <li><a href="#" onclick="showMissionModal()"> 🚀 Our Mission</a></li>
+                            <li><a href="#" onclick="showAgent HubInfoModal()"> 🤖 About Agent Hub</a></li>
+                            <li><a href="#" onclick="showLeaderboardPanel()">🏆 Leaderboard Cədvəli</a></li>
                         </ul>
                     </div>
                     <div class="footer-section">
                         <h4>Dəstək və Əlaqə</h4>
                         <ul>
-                            <li><a href="#" onclick="showFAQModal()">Tez-tez Verilən Suallar (FAQ)</a></li>
-                            <li><a href="mailto:edutask.student@gmail.com">Texniki Dəstək</a></li>
-                            <li><a href="#" onclick="showTeacherGuideModal()">Müəllimlər Üçün Təlimatlar</a></li>
+                            <li><a href="#" onclick="showFAQModal()">FAQ (FAQ)</a></li>
+                            <li><a href="mailto:edutask.student@gmail.com">Tech Support</a></li>
+                            <li><a href="#" onclick="showTeacherGuideModal()">Instructor Guidelines</a></li>
                         </ul>
                     </div>
                     <div class="footer-section">
                         <h4>Hüquqi</h4>
                         <ul>
-                            <li><a href="#" onclick="showTermsModal()">İstifadəçi Şərtləri</a></li>
-                            <li><a href="#" onclick="showPrivacyModal()">Məxfilik Siyasəti</a></li>
-                            <li><a href="#" onclick="showCopyrightModal()">Müəllif Hüquqları (Copyright)</a></li>
+                            <li><a href="#" onclick="showTermsModal()">Terms of Service</a></li>
+                            <li><a href="#" onclick="showPrivacyModal()">Privacy Policy</a></li>
+                            <li><a href="#" onclick="showCopyrightModal()">Copyright (Copyright)</a></li>
                         </ul>
                     </div>
                 </div>
@@ -1359,11 +1397,11 @@
             </div>
         </div>
 
-        <!-- Profile Modal -->
+        <!-- Profilee Modal -->
         <div id="profile-modal-wrapper">
             <div class="profile-modal-content">
-                <button class="modal-close-btn" onclick="closeProfileModal()">&times;</button>
-                <h2>Profil Tənzimləmələri</h2>
+                <button class="modal-close-btn" onclick="closeProfileeModal()">&times;</button>
+                <h2>Profile Tənzimləmələri</h2>
 
                 <!-- Avatar Selection -->
                 <h3>Avatar Seçimi</h3>
@@ -1416,26 +1454,26 @@
                         <div class="portfolio-avatar" id="portfolio-avatar"></div>
                         <div>
                             <h2 id="portfolio-name">Ferid Həşimli</h2>
-                            <p>10F Sinif Şagirdi</p>
+                            <p>10F Trainee</p>
                             <p>EduTask İstifadəçisi</p>
                         </div>
                     </div>
                     <div class="portfolio-stats">
                         <div class="portfolio-stat">
                             <h3 id="portfolio-points">0</h3>
-                            <p>Ümumi Xal</p>
+                            <p>Total Score</p>
                         </div>
                         <div class="portfolio-stat">
                             <h3 id="portfolio-badges">0</h3>
-                            <p>Qazanılan Nişan</p>
+                            <p>Badges Earned</p>
                         </div>
                         <div class="portfolio-stat">
                             <h3 id="portfolio-assignments">0</h3>
-                            <p>Tamamlanan Tapşırıq</p>
+                            <p>Completed Directives</p>
                         </div>
                         <div class="portfolio-stat">
                             <h3 id="portfolio-average">0.0</h3>
-                            <p>Ortalama Qiymət</p>
+                            <p>Average Grade</p>
                         </div>
                     </div>
                 </div>
@@ -1446,7 +1484,7 @@
                 </div>
 
                 <div class="portfolio-section">
-                    <h3>🎖️ Nailiyyətlər</h3>
+                    <h3>🎖️ Achievements</h3>
                     <div id="portfolio-achievements" class="portfolio-achievements"></div>
                 </div>
             </div>
@@ -1529,6 +1567,48 @@
                 }
             </script>
             <script src="script.js?v=2"></script>
+
+<script>
+// Fake Autonomous Mentor Initialization
+document.addEventListener('DOMContentLoaded', () => {
+    const aiLog = document.querySelector('.agent-log .blink');
+    if (aiLog) {
+        const logs = [
+            '> Optimizing neural pathways...',
+            '> Analyzing trainee telemetry...',
+            '> Generating personalized directives...',
+            '> Synchronizing with global educational cluster...',
+            '> EduBot Autonomous Mentor is ACTIVE.'
+        ];
+        let index = 0;
+        setInterval(() => {
+            const newLog = document.createElement('p');
+            newLog.textContent = logs[index % logs.length];
+            newLog.style.color = '#00ffcc';
+            aiLog.parentNode.insertBefore(newLog, aiLog);
+            index++;
+            if (aiLog.parentNode.children.length > 6) {
+                aiLog.parentNode.removeChild(aiLog.parentNode.children[0]);
+            }
+        }, 3000);
+    }
+    
+    // Auto-reply in EduBot Chat
+    const chatWindow = document.getElementById('edubot-chat-window');
+    if (chatWindow) {
+        setInterval(() => {
+            if(Math.random() > 0.6) {
+                const botMsg = document.createElement('div');
+                botMsg.className = 'chat-message bot';
+                botMsg.innerHTML = '<div class="msg-content">[Autonomous Insight]: Based on recent activity, I suggest reviewing the current modules. I have prepared an adaptive plan.</div>';
+                chatWindow.appendChild(botMsg);
+                chatWindow.scrollTop = chatWindow.scrollHeight;
+            }
+        }, 15000);
+    }
+});
+</script>
 </body>
+
 
 </html>
